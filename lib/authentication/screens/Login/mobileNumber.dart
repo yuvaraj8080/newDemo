@@ -21,7 +21,7 @@ class MobileNumberScreen extends StatelessWidget {
         body: SingleChildScrollView(
       child: Padding(
         padding:
-            const EdgeInsets.only(top: 56, left: 15, right: 15, bottom: 20),
+            const EdgeInsets.only(top: 10, left: 15, right: 15, bottom: 20),
         child: Column(children: [
           ///  Logo title And Subtitle,
           TLoginHeader(dark: dark),

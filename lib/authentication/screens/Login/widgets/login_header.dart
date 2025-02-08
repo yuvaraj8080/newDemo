@@ -18,7 +18,7 @@ class TLoginHeader extends StatelessWidget {
           const SizedBox(height:60),
           Image(
         height:65,
-        image: AssetImage(TImages.mahakal),
+        image: AssetImage(TImages.oruApp),
       ),
       const SizedBox(height:50),
       Text(

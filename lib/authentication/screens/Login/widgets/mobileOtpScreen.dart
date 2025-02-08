@@ -1,14 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
-import '../../../../utils/halpers/helper_function.dart';
-import '../../../../utils/validators/validator.dart';
-import '../login_controller.dart';
+import 'NameScreen.dart';
 
 
 class Mobileotpscreen extends StatelessWidget {
@@ -16,8 +12,6 @@ class Mobileotpscreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dark = THelperFunction.isDarkMode(context);
-    final controller = Get.put(LoginController());
 
     return Scaffold(
         appBar:TAppBar(
@@ -37,7 +31,7 @@ class Mobileotpscreen extends StatelessWidget {
                   const SizedBox(height:60),
                   Image(
                     height:65,
-                    image: AssetImage(TImages.mahakal),
+                    image: AssetImage(TImages.oruApp),
                   ),
                   const SizedBox(height:50),
                   Text(
@@ -52,48 +46,39 @@ class Mobileotpscreen extends StatelessWidget {
                   ),
                 ]),
 
-              Form(
-                key: controller.loginFormKey,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Column(
-                    children: [
-                      const SizedBox(height:70),
-                      TextFormField(
-                        controller: controller.email,
-                        validator: (value) => TValidator.validateEmail(value),
-                        decoration: const InputDecoration(
-                            labelText: "Enter Your Phone Number",
-                            prefixText:"+91  " ,
-                            hintText:"Mobile Number"
-                        ),
-                      ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 20),
+                child: Column(
+                  children: [
+                    const SizedBox(height:70),
 
-                      const SizedBox(height: 60),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Obx(() => Checkbox(
-                            value: controller.rememberMe.value,
-                            onChanged: (value) =>
-                            controller.rememberMe.value = !controller.rememberMe.value,
-                          )),
-                          Text("Accept Terms and Condition")
-                        ],
+
+
+
+                    Text(
+                        "Didn't receive OTP?",
+                        style: Theme.of(context).textTheme.bodySmall
+                    ),
+
+                    Text(
+                        "Resend OTP in 0:23 Sec",
+                        style: Theme.of(context).textTheme.bodyMedium
+                    ),
+
+                    const SizedBox(height:70),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          // Perform email and password sign in
+                          // controller.emailAndPasswordSignIn();
+                          Get.to(() => const Namescreen());
+
+                        },
+                        child: const Text("Verify OTP"),
                       ),
-                      const SizedBox(height: 16),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            // Perform email and password sign in
-                            // controller.emailAndPasswordSignIn();
-                          },
-                          child: const Text("Sign In"),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               )
 

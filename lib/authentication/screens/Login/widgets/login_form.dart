@@ -51,7 +51,7 @@ class TLoginForm extends StatelessWidget {
                 onPressed: () {
                   // Perform email and password sign in
                   // controller.emailAndPasswordSignIn();
-                  Get.offAll(() => const Mobileotpscreen());
+                  Get.to(() => const Mobileotpscreen());
                 },
                 child: const Text("Sign In"),
               ),
