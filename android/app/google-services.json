@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "55491109524",
+    "project_id": "erumobileapp",
+    "storage_bucket": "erumobileapp.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:55491109524:android:fece4ebcb5a6bfeb228a81",
+        "android_client_info": {
+          "package_name": "com.example.oru_ecommerce_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCgWdIcWh_RmMzE-CHj-gCTiOUSYzC7rS8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
