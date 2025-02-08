@@ -3,10 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:oru_ecommerce_app/authentication/screens/Login/widgets/login_form.dart';
-import 'package:oru_ecommerce_app/authentication/screens/Login/widgets/login_header.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
-
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/halpers/helper_function.dart';
