@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+import '../../../authentication/screens/Login/login.dart';
+import '../../../authentication/screens/onBoarding/onboarding.dart';
 import '../../../utils/exceptions/firebase_auth_exceptions.dart';
 import '../../../utils/exceptions/firebase_exceptions.dart';
 import '../../../utils/exceptions/format_exceptions.dart';
@@ -55,10 +57,10 @@ class AuthenticationRepository extends GetxController{
       // No user is signed in
       deviceStorage.writeIfNull("IsFirstTime", true);
 
-      // // Check if it's the first time launching the app
-      // deviceStorage.read("IsFirstTime") != true
-      //     ? Get.offAll(() => const LoginScreen())
-      //     : Get.offAll(const OnBoardingScreen());
+      // Check if it's the first time launching the app
+      deviceStorage.read("IsFirstTime") != true
+          ? Get.offAll(() => const LoginScreen())
+          : Get.offAll(const OnBoardingScreen());
     }
   }
 
