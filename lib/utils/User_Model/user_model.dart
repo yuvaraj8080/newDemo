@@ -32,7 +32,7 @@ UserModel({
   ///STATIC FUNCTION TO SPLIT FULL NAME INTO FIRST AND LAST NAME
    static List<String> nameParts(fullName)=> fullName.split(" ");
 
-   ///STATIC FUNCTION TO GENERATE A USERNAME FROM THE FULL NAME
+   ///STATIC FUNCTION TO GENERATE ApiService USERNAME FROM THE FULL NAME
    static String generateUsername(fullName){
      List<String> nameParts = fullName.split(" ");
      String firstName = nameParts[0].toLowerCase();
@@ -57,7 +57,7 @@ UserModel({
      };
    }
 
-   /// FACTORY MATHOD TO CREATE A USERMODEL FROM A FIREBASE DOCUMENT SNAPSHOT
+   /// FACTORY MATHOD TO CREATE ApiService USERMODEL FROM ApiService FIREBASE DOCUMENT SNAPSHOT
   factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data();
     if (data != null) {

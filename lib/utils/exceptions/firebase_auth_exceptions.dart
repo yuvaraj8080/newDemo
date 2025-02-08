@@ -94,7 +94,7 @@ class TFirebaseAuthException implements Exception {
       case 'app-not-authorized':
         return 'The app is not authorized to use Firebase Authentication with the provided API key.';
       case 'keychain-error':
-        return 'A keychain error occurred. Please check the keychain and try again.';
+        return 'ApiService keychain error occurred. Please check the keychain and try again.';
       case 'internal-error':
         return 'An internal authentication error occurred. Please try again later.';
       case 'INVALID_LOGIN_CREDENTIALS':

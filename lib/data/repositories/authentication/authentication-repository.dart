@@ -161,7 +161,7 @@ class AuthenticationRepository extends GetxController{
   ///[ REAUTHENTICATE] - REAUTHENTICATE USER
   Future<void> reAuthenticateWithEmailAndPassword(String email, String password) async{
      try{
-       // CREATE A CREDENTIAL
+       // CREATE ApiService CREDENTIAL
        AuthCredential credential = EmailAuthProvider.credential(email: email, password: password);
 
        // REAUTHENTICATE

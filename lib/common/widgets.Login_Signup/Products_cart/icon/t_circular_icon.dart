@@ -5,7 +5,7 @@ import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/halpers/helper_functions.dart';
 
 class TCircularIcon extends StatelessWidget {
-  /// A custom icon widget with a background color
+  /// ApiService custom icon widget with a background color
   ///
   /// Properties are:
   /// Container [width]. [height], & [backgroundColor]

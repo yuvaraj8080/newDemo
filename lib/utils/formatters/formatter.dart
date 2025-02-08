@@ -8,7 +8,7 @@ class TFormatter{
   }
 
   static String formatPhoneNumber(String phoneNumber){
-    // ASSUMING A 10- DIGIT US PHONE NUMBER FORMAT: (123)  456-789
+    // ASSUMING ApiService 10- DIGIT US PHONE NUMBER FORMAT: (123)  456-789
     if(phoneNumber.length == 10){
       return"(${phoneNumber.substring(0,3)}) ${phoneNumber.substring(3,6)}${phoneNumber.substring(6)}";
     }

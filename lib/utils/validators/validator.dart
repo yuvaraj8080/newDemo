@@ -34,7 +34,7 @@ class TValidator{
     }
 
     //CHECK FOR UPPERCASE LETTERS
-    if(!value.contains(RegExp(r'[A-Z]'))){
+    if(!value.contains(RegExp(r'[ApiService-Z]'))){
       return "Password must contain at least one uppercase letter.";
     }
 
