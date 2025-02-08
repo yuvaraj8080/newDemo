@@ -17,7 +17,7 @@ class MobileOtpScreen extends StatelessWidget {
     return Scaffold(
       appBar:TAppBar(
         actions:[
-          IconButton(onPressed:(){}, icon:Icon(Icons.restore_from_trash_rounded,size:20,))
+          IconButton(onPressed:(){}, icon:Icon(Icons.restore_from_trash_rounded,size:25,))
         ],
       ),
         body: SingleChildScrollView(
