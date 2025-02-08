@@ -35,6 +35,7 @@ class LoginController extends GetxController {
     TFullScreenLoader.stopLoading();
     if (success) {
       Get.snackbar('Success', 'OTP verified');
+      apiService.isLoggedIn();
       Get.to(() => const Namescreen());
     } else {
       Get.snackbar('Error', 'Invalid OTP');
@@ -50,6 +51,20 @@ class LoginController extends GetxController {
       Get.offAll(() => const HomeScreen());
     } else {
       Get.snackbar('Error', 'Failed to update name');
+    }
+  }
+
+
+  Future<void> logout() async {
+    try {
+      bool success = await apiService.logout();
+      if (success) {
+        Get.snackbar('Success', 'Logged out successfully');
+      } else {
+        Get.snackbar('Error', 'Failed to logout');
+      }
+    } catch (e) {
+      Get.snackbar('Error', 'Failed to logout: $e');
     }
   }
 }

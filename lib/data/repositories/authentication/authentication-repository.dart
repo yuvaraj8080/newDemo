@@ -37,7 +37,7 @@ class AuthenticationRepository extends GetxController {
       if (isNameUpdated) {
         Get.off(() => const HomeScreen());
       } else {
-        Get.off(() => const Namescreen());
+        Get.off(() => const HomeScreen());
       }
     } else {
       // No user is signed in

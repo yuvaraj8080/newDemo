@@ -17,11 +17,7 @@ class ApiService {
       }),
     );
 
-    if (response.statusCode == 200) {
-      return true;
-    } else {
-      return false;
-    }
+    return response.statusCode == 200;
   }
 
   Future<bool> validateOtp(int countryCode, int mobileNumber, int otp) async {
@@ -35,11 +31,7 @@ class ApiService {
       }),
     );
 
-    if (response.statusCode == 200) {
-      return true;
-    } else {
-      return false;
-    }
+    return response.statusCode == 200;
   }
 
   Future<bool> isLoggedIn() async {
@@ -52,30 +44,8 @@ class ApiService {
       final data = jsonDecode(response.body);
       storage.write('csrfToken', data['csrfToken']);
       storage.write('cookie', response.headers['set-cookie']);
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  Future<bool> updateUser(int countryCode, String userName) async {
-    final csrfToken = storage.read('csrfToken') ?? '';
-    final cookie = storage.read('cookie') ?? '';
-
-    final response = await http.post(
-      Uri.parse('$baseUrl/update'),
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Csrf-Token': csrfToken,
-        'Cookie': cookie,
-      },
-      body: jsonEncode({
-        'countryCode': countryCode,
-        'userName': userName,
-      }),
-    );
-
-    if (response.statusCode == 200) {
+      print('CSRF Token: ${data['csrfToken']}');
+      print('Cookie: ${response.headers['set-cookie']}');
       return true;
     } else {
       return false;
@@ -95,6 +65,53 @@ class ApiService {
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
       return data['isNameUpdated'];
+    } else {
+      return false;
+    }
+  }
+
+  Future<bool> updateUser(int countryCode, String userName) async {
+    final csrfToken = storage.read('csrfToken') ?? '';
+    final cookie = storage.read('cookie') ?? '';
+    print('CSRF Token: $csrfToken');
+    print('Cookie: $cookie');
+
+    final response = await http.post(
+      Uri.parse('$baseUrl/update'),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Csrf-Token': csrfToken,
+        'Cookie': cookie,
+      },
+      body: jsonEncode({
+        'countryCode': countryCode,
+        'userName': userName,
+      }),
+    );
+
+    return response.statusCode == 200;
+  }
+
+
+
+  Future<bool> logout() async {
+    final csrfToken = storage.read('csrfToken') ?? '';
+    final cookie = storage.read('cookie') ?? '';
+    print('CSRF Token: $csrfToken');
+    print('Cookie: $cookie');
+
+    final response = await http.get(
+      Uri.parse('$baseUrl/logout'),
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Csrf-Token': csrfToken,
+        'Cookie': cookie,
+      },
+    );
+
+    if (response.statusCode == 200) {
+      storage.erase();
+      return true;
     } else {
       return false;
     }
