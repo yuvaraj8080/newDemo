@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:oru_ecommerce_app/authentication/screens/Login/widgets/mobileOtpScreen.dart';
 import '../../../../../utils/validators/validator.dart';
 import '../../password_configuration/forget_password.dart';
 import '../../signup.widgets/signup.dart';
@@ -49,7 +50,8 @@ class TLoginForm extends StatelessWidget {
               child: ElevatedButton(
                 onPressed: () {
                   // Perform email and password sign in
-                  controller.emailAndPasswordSignIn();
+                  // controller.emailAndPasswordSignIn();
+                  Get.offAll(() => const Mobileotpscreen());
                 },
                 child: const Text("Sign In"),
               ),

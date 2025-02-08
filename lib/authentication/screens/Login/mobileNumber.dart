@@ -5,14 +5,12 @@ import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart
 import '../../../utils/halpers/helper_function.dart';
 
 
-class MobileOtpScreen extends StatelessWidget {
-  const MobileOtpScreen({super.key});
+class MobileNumberScreen extends StatelessWidget {
+  const MobileNumberScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunction.isDarkMode(context);
-
-
 
     return Scaffold(
       appBar:TAppBar(
@@ -30,7 +28,6 @@ class MobileOtpScreen extends StatelessWidget {
 
           /// Form TextField
           const TLoginForm(),
-
 
         ]),
       ),

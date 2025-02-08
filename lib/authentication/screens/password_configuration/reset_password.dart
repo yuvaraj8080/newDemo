@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../controllers/forget_password_controller.dart';
-import '../Login/login.dart';
+import '../Login/mobileNumber.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   const ResetPasswordScreen({super.key, required this.email});
@@ -17,7 +17,7 @@ class ResetPasswordScreen extends StatelessWidget {
         appBar: AppBar(
             automaticallyImplyLeading: false,
             actions:[
-              IconButton(onPressed: ()=>Get.offAll(()=> const MobileOtpScreen()), icon:const Icon(CupertinoIcons.clear)),
+              IconButton(onPressed: ()=>Get.offAll(()=> const MobileNumberScreen()), icon:const Icon(CupertinoIcons.clear)),
             ]),
         body: SingleChildScrollView(
           child:Padding(padding: const EdgeInsets.only(top:100,right:32,left:32,bottom: 32),
@@ -41,7 +41,7 @@ class ResetPasswordScreen extends StatelessWidget {
 
                     /// Calling the Successfully Verification Screen and Arguments
                     SizedBox(width:double.infinity,child: ElevatedButton(
-                        onPressed:()=> Get.offAll(()=> const MobileOtpScreen()),child:const Text("Done"),
+                        onPressed:()=> Get.offAll(()=> const MobileNumberScreen()),child:const Text("Done"),
                         )),
 
 
