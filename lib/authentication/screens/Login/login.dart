@@ -1,13 +1,12 @@
-
 import 'package:flutter/material.dart';
 import 'package:oru_ecommerce_app/authentication/screens/Login/widgets/login_form.dart';
 import 'package:oru_ecommerce_app/authentication/screens/Login/widgets/login_header.dart';
-
+import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../utils/halpers/helper_function.dart';
 
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class MobileOtpScreen extends StatelessWidget {
+  const MobileOtpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +15,15 @@ class LoginScreen extends StatelessWidget {
 
 
     return Scaffold(
+      appBar:TAppBar(
+        actions:[
+          IconButton(onPressed:(){}, icon:Icon(Icons.restore_from_trash_rounded,size:20,))
+        ],
+      ),
         body: SingleChildScrollView(
       child: Padding(
         padding:
-            const EdgeInsets.only(top: 56, left: 20, right: 20, bottom: 20),
+            const EdgeInsets.only(top: 56, left: 15, right: 15, bottom: 20),
         child: Column(children: [
           ///  Logo title And Subtitle,
           TLoginHeader(dark: dark),

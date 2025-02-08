@@ -28,7 +28,7 @@ void nextPage() {
   if(currentPageIndex.value == 2){
     final storage = GetStorage();
     storage.write("IsFirstTime",false);
-    Get.offAll(const LoginScreen());
+    Get.offAll(const MobileOtpScreen());
   }
   else{
     int page = currentPageIndex.value+1;
