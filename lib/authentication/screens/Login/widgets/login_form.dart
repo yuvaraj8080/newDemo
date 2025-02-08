@@ -10,14 +10,14 @@ class TLoginForm extends StatelessWidget {
     final controller = Get.put(LoginController());
 
     return Form(
-      key: controller.loginFormKey,
+      key: controller.mobileFormKey,
       child: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Column(
           children: [
             const SizedBox(height: 70),
             TextFormField(
-              controller: controller.email,
+              controller: controller.mobileNumber,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Please enter your phone number';

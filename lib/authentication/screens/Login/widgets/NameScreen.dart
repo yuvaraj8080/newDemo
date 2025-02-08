@@ -11,8 +11,7 @@ class Namescreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.find<LoginController>();
-
+    final controller = Get.put(LoginController());
     return Scaffold(
       appBar: TAppBar(
         showBackArrow: true,
@@ -71,9 +70,9 @@ class Namescreen extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: ()
                           {
-                            // if (controller.nameFormKey.currentState!.validate()) {
-                            //   controller.updateName();
-                            // }
+                            if (controller.nameFormKey.currentState!.validate()) {
+                              controller.updateName();
+                            }
                           },
                           child: const Text("Confirm Name"),
                         ),
