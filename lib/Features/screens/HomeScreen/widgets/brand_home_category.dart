@@ -1,11 +1,9 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oru_ecommerce_app/Features/controllers/banner_controller.dart';
-import 'package:oru_ecommerce_app/common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
-import 'package:oru_ecommerce_app/utils/constants/colors.dart';
 import '../../../../../common/shimmers/category_shimmer.dart';
-
+import '../../../../../common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
+import '../../../../../utils/constants/colors.dart';
+import '../../../controllers/banner_controller.dart';
 
 class TBrandHomeCategory extends StatelessWidget {
   const TBrandHomeCategory({super.key});
@@ -22,19 +20,22 @@ class TBrandHomeCategory extends StatelessWidget {
         );
       }
       return SizedBox(
-        height:70,
+        height: 70,
         child: ListView.builder(
           shrinkWrap: true,
           itemCount: categoryController.brands.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (_, index) {
-            final category = categoryController.brands[index];
+            final brand = categoryController.brands[index];
             return Padding(
-              padding: const EdgeInsets.only(right:20),
+              padding: const EdgeInsets.only(right: 20),
               child: TRoundedContainer(
-                radius:100,
-                backgroundColor:TColors.grey,
-                child:Image.asset(category.image),
+                radius: 100,
+                backgroundColor: TColors.grey,
+                child: Padding(
+                  padding: const EdgeInsets.all(10),
+                  child: Image.network(brand.imagePath,width:50,fit:BoxFit.contain),
+                ),
               ),
             );
           },

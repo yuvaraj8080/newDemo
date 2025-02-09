@@ -1,3 +1,5 @@
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 
 class Banner {
@@ -13,9 +15,49 @@ class Category {
 }
 
 class Brand {
-  final String image;
+  final String make;
+  final String imagePath;
 
-  Brand({required this.image});
+  Brand({required this.make, required this.imagePath});
+
+  factory Brand.fromJson(Map<String, dynamic> json) {
+    return Brand(
+      make: json['make'],
+      imagePath: json['imagePath'],
+    );
+  }
+}
+
+class Product {
+  final String id;
+  final String title;
+  final String thumbnail;
+  final double price;
+  final double salePrice;
+  final String productType;
+  final Brand? brand;
+
+  Product({
+    required this.id,
+    required this.title,
+    required this.thumbnail,
+    required this.price,
+    required this.salePrice,
+    required this.productType,
+    this.brand,
+  });
+
+  factory Product.fromJson(Map<String, dynamic> json) {
+    return Product(
+      id: json['_id'],
+      title: json['title'],
+      thumbnail: json['thumbnail'],
+      price: json['price'].toDouble(),
+      salePrice: json['salePrice'].toDouble(),
+      productType: json['productType'],
+      brand: json['brand'] != null ? Brand.fromJson(json['brand']) : null,
+    );
+  }
 }
 
 class HomeController extends GetxController {
@@ -27,35 +69,72 @@ class HomeController extends GetxController {
   final banners = <Banner>[].obs; // Dummy banner list
   final featuredCategories = <Category>[].obs; // Dummy category list
   final brands = <Brand>[].obs; // Dummy brand list
-
-
+  final products = <Product>[].obs; // Products list
 
   @override
   void onInit() {
     super.onInit();
     _loadDummyBanners();
     _loadDummyCategories();
-    _loadDummyBrands();
+    fetchBrands();
+    fetchProducts();
   }
 
-  /// LOAD DUMMY BRANDS
-  void _loadDummyBrands() {
+  /// FETCH BRANDS FROM API
+  Future<void> fetchBrands() async {
     isLoading.value = true;
+    final response = await http.get(Uri.parse('http://40.90.224.241:5000/makeWithImages'));
 
-    // Simulate a network call with a delay
-    Future.delayed(Duration(seconds: 1), () {
-      brands.value = [
-        Brand(image: 'assets/icons/brands/img.png'),
-        Brand(image: 'assets/icons/brands/img_8.png'),
-        Brand(image: 'assets/icons/brands/img_2.png'),
-        Brand(image: 'assets/icons/brands/img_3.png'),
-        Brand(image: 'assets/icons/brands/img_4.png'),
-        Brand(image: 'assets/icons/brands/img_5.png'),
-        Brand(image: 'assets/icons/brands/img_6.png'),
-        Brand(image: 'assets/icons/brands/img_7.png'),
-      ];
-      isLoading.value = false;
-    });
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      if (data['status'] == 'SUCCESS') {
+        final List<dynamic> brandData = data['dataObject'];
+        brands.value = brandData.map((item) => Brand(
+          make: item['make'],
+          imagePath: item['imagePath'],
+        )).toList();
+      }
+    } else {
+      // Handle error
+      print('Failed to load brands');
+    }
+
+    isLoading.value = false;
+  }
+
+  /// FETCH PRODUCTS FROM API
+  Future<void> fetchProducts() async {
+    isLoading.value = true;
+    final response = await http.post(
+      Uri.parse('http://40.90.224.241:5000/filter'),
+      headers: {'Content-Type': 'application/json'},
+      body: json.encode({
+        "filter": {
+          "condition": ["Like New", "Fair"],
+          "make": ["Samsung"],
+          "storage": ["16 GB", "32 GB"],
+          "ram": ["4 GB"],
+          "warranty": ["Brand Warranty", "Seller Warranty"],
+          "priceRange": [40000, 175000],
+          "verified": true,
+          "sort": {"price": 1}, // Price Low To High
+          "page": 1
+        }
+      }),
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body);
+      if (data['status'] == 'SUCCESS') {
+        final List<dynamic> productData = data['dataObject'];
+        products.value = productData.map((item) => Product.fromJson(item)).toList();
+      }
+    } else {
+      // Handle error
+      print('Failed to load products');
+    }
+
+    isLoading.value = false;
   }
 
   /// LOAD DUMMY BANNERS
@@ -83,28 +162,25 @@ class HomeController extends GetxController {
     Future.delayed(Duration(seconds: 1), () {
       featuredCategories.value = [
         Category(image: 'assets/icons/categories/img.png'),
-        Category(image: 'assets/icons/categories/img_1.png' ),
-        Category(image: 'assets/icons/categories/img_2.png' ),
+        Category(image: 'assets/icons/categories/img_1.png'),
+        Category(image: 'assets/icons/categories/img_2.png'),
         Category(image: 'assets/icons/categories/img_3.png'),
-        Category(image: 'assets/icons/categories/img_4.png' ),
-        Category(image: 'assets/icons/categories/img_5.png' ),
-        Category(image: 'assets/icons/categories/img_6.png' ),
-        Category(image: 'assets/icons/categories/img_7.png' ),
-        Category(image: 'assets/icons/categories/img_8.png' ),
-        Category(image: 'assets/icons/categories/img_9.png' ),
-        Category(image: 'assets/icons/categories/img_10.png' ),
-        Category(image: 'assets/icons/categories/img_11.png' ),
-        Category(image: 'assets/icons/categories/img_12.png' ),
-        Category(image: 'assets/icons/categories/img_13.png' ),
+        Category(image: 'assets/icons/categories/img_4.png'),
+        Category(image: 'assets/icons/categories/img_5.png'),
+        Category(image: 'assets/icons/categories/img_6.png'),
+        Category(image: 'assets/icons/categories/img_7.png'),
+        Category(image: 'assets/icons/categories/img_8.png'),
+        Category(image: 'assets/icons/categories/img_9.png'),
+        Category(image: 'assets/icons/categories/img_10.png'),
+        Category(image: 'assets/icons/categories/img_11.png'),
+        Category(image: 'assets/icons/categories/img_12.png'),
+        Category(image: 'assets/icons/categories/img_13.png'),
         Category(image: 'assets/icons/categories/img_14.png'),
-        Category(image: 'assets/icons/categories/img_15.png' ),
+        Category(image: 'assets/icons/categories/img_15.png'),
       ];
       isLoading.value = false;
     });
-
   }
-
-
 
   /// UPDATE PAGE NAVIGATION DOTS
   void updatePageIndicator(index) {

@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/TProductCardVertical.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/brand_home_category.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/home_categories.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/promo_slider.dart';
-import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
-import 'package:oru_ecommerce_app/common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
 import 'package:oru_ecommerce_app/utils/validators/validator.dart';
 
+import '../../../common/shimmers/vertical_productShimmer.dart';
+import '../../../common/widgets.Login_Signup/appBar/appbar.dart';
+import '../../../common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
+import '../../../common/widgets.Login_Signup/layout/grid_layout.dart';
 import '../../../utils/constants/colors.dart';
+import '../../controllers/banner_controller.dart';
 import '../Login/login_controller.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,6 +21,7 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final logoutController = Get.put(LoginController());
+    final homeController = Get.put(HomeController());
 
     List<String> names = ["Sell Used Phone", "Buy Used Phone", "Compare Price", "My Profile", "My Listing", "Services", "Register your Store", "Get the App"];
 
@@ -51,7 +56,7 @@ class HomeScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
-            crossAxisAlignment:CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               TextFormField(
                 // controller: controller.mobileNumber,
@@ -86,22 +91,36 @@ class HomeScreen extends StatelessWidget {
                 ),
               ),
 
-
               //// PROMO BANNER SLIDER HAR /////
-              const SizedBox(height:16),
+              const SizedBox(height: 16),
               TPromoSlider(),
 
               //// WHATS ON YOUR MIND ///
-              const SizedBox(height:16),
+              const SizedBox(height: 16),
               Text("What's on your mind?", style: Theme.of(context).textTheme.titleSmall),
               THomeCategories(),
 
-
               //// WHATS ON YOUR MIND ///
-              const SizedBox(height:16),
+              const SizedBox(height: 16),
               Text("Top Brands", style: Theme.of(context).textTheme.titleSmall),
-              const SizedBox(height:10),
-              TBrandHomeCategory()
+              const SizedBox(height: 10),
+              TBrandHomeCategory(),
+
+              //// FETCHED PRODUCT HARE ////
+              Obx(() {
+                if (homeController.isLoading.value) {
+                  return const TVerticalProductShimmer();
+                }
+                if (homeController.products.isEmpty) {
+                  return Center(child: Text("NO Data Found!", style: Theme.of(context).textTheme.bodyLarge));
+                }
+                return TGridLayout(
+                  itemBuilder: (_, index) => TProductCardVertical(
+                    product: homeController.products[index],
+                  ),
+                  itemCount: homeController.products.length,
+                );
+              })
             ],
           ),
         ),
