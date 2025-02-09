@@ -28,7 +28,7 @@ class TBrandHomeCategory extends StatelessWidget {
           itemBuilder: (_, index) {
             final brand = productController.brands[index];
             return Padding(
-              padding: const EdgeInsets.only(right: 20),
+              padding: const EdgeInsets.only(right:15),
               child: TRoundedContainer(
                 radius: 100,
                 backgroundColor: TColors.grey,

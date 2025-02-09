@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets.Login_Signup/images/t_Rounded_image.dart';
 import '../../../../common/widgets.Login_Signup/texts/product_title_text.dart';
@@ -7,6 +8,7 @@ import '../../../../data/Model/Product_Model.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/halpers/helper_function.dart';
+import 'FavLikeIcon.dart';
 
 class TProductCardVertical extends StatelessWidget {
   const TProductCardVertical({super.key, required this.product});
@@ -16,6 +18,7 @@ class TProductCardVertical extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dark = THelperFunction.isDarkMode(context);
+
 
     return Card(
       elevation:1,
@@ -45,10 +48,9 @@ class TProductCardVertical extends StatelessWidget {
                     Positioned(
                       top: -3,
                       right: -8,
-                      child: IconButton(
+                      child:  IconButton(
                         onPressed: () {},
-                        icon: Icon(Iconsax.heart,size:30),
-                        // TFavoriteIcon(productId: product.id),
+                        icon: TFavoriteIcon(productId: product.id),
                       ),
                     ),
                   ],

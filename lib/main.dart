@@ -8,8 +8,13 @@ import 'data/repositories/authentication/authentication-repository.dart';
 import 'firebase_options.dart';
 
 void main() async {
+
+
   ///---WIDGET BINDING
   final WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  await GetStorage.init();
+
 
   ///----AWAIT SPLASH UNTIL ITEM LOAD----
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -19,7 +24,6 @@ void main() async {
         (FirebaseApp value) => Get.put(AuthenticationRepository()),
   );
 
-  await GetStorage.init();
 
   runApp(const App());
 }
