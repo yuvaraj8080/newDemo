@@ -21,20 +21,20 @@ class LoginController extends GetxController {
   void onInit() {
     super.onInit();
     // Optionally check login status on initialization
-    checkLoginStatus();
+    // checkLoginStatus();
   }
-
-  Future<void> checkLoginStatus() async {
-    bool loggedInStatus = await isLoggedIn(); // Call the isLoggedIn method
-    if (loggedInStatus) {
-      Get.offAll(() => const NavigationMenu()); // Navigate to the main menu if logged in
-    }
-  }
-
-  Future<bool> isLoggedIn() async {
-    // Call the isLoggedIn method from ApiService
-    return await apiService.isLoggedIn();
-  }
+  //
+  // Future<void> checkLoginStatus() async {
+  //   bool loggedInStatus = await isLoggedIn(); // Call the isLoggedIn method
+  //   if (loggedInStatus) {
+  //     Get.offAll(() => const NavigationMenu()); // Navigate to the main menu if logged in
+  //   }
+  // }
+  //
+  // Future<bool> isLoggedIn() async {
+  //   // Call the isLoggedIn method from ApiService
+  //   return await apiService.isLoggedIn();
+  // }
 
 
   Future<void> requestOtp() async {

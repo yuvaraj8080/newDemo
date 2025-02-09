@@ -15,6 +15,7 @@ import '../../../common/widgets.Login_Signup/layout/TExpanstionTileFAQ.dart';
 import '../../../common/widgets.Login_Signup/layout/TRounded_ListView.dart';
 import '../../../common/widgets.Login_Signup/layout/grid_layout.dart';
 import '../../../utils/constants/colors.dart';
+import 'widgets/sideBar_drawer.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -24,17 +25,34 @@ class HomeScreen extends StatelessWidget {
     final productController = Get.put(ProductController());
     final apiService = ApiService();
 
-
-
-    List<String> names = ["Sell Used Phone", "Buy Used Phone", "Compare Price", "My Profile", "My Listing", "Services", "Register your Store", "Get the App"];
+    List<String> names = [
+      "Sell Used Phone",
+      "Buy Used Phone",
+      "Compare Price",
+      "My Profile",
+      "My Listing",
+      "Services",
+      "Register your Store",
+      "Get the App"
+    ];
 
     return Scaffold(
       appBar: TAppBar(
-        leadingIcon: Icons.list,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Image.asset(TImages.oruApp, width: 50),
+            Row(
+              children: [
+                IconButton(
+                  icon:Icon(Icons.list,size:36),
+                  onPressed:(){
+                    Get.snackbar('Open Drawer', 'Swap right from left corner');
+                  },
+                ),
+                Image.asset(TImages.oruApp, width: 60),
+
+              ],
+            ),
             Row(
               children: [
                 Text("India ", style: Theme.of(context).textTheme.bodyMedium),
@@ -60,7 +78,7 @@ class HomeScreen extends StatelessWidget {
               } else if (snapshot.hasData && snapshot.data == true) {
                 // User is logged in
                 return IconButton(
-                  icon: Icon(Icons.notifications,size:25),
+                  icon: Icon(Icons.notifications, size: 25),
                   onPressed: () {
                     // Handle notification icon tap
                     Get.snackbar('Notifications', 'You have new notifications');
@@ -85,7 +103,9 @@ class HomeScreen extends StatelessWidget {
               }
             },
           ),
-        ],      ),
+        ],
+      ),
+      drawer: CustomDrawer(), // Add the drawer here
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -95,7 +115,6 @@ class HomeScreen extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 TextFormField(
-                  // controller: controller.mobileNumber,
                   validator: (value) => TValidator.validateEmptyText("Name", value),
                   decoration: InputDecoration(
                     prefixIcon: Icon(Icons.search),
@@ -106,9 +125,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-
                 TScrollableListView(names: names),
-
               ],
             ),
           ),
@@ -120,7 +137,6 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-
                     // PROMO BANNER SLIDER
                     const SizedBox(height: 16),
                     TPromoSlider(),
@@ -129,17 +145,16 @@ class HomeScreen extends StatelessWidget {
                     const SizedBox(height: 16),
                     Text("What's on your mind?", style: Theme.of(context).textTheme.titleSmall),
                     const SizedBox(height: 8),
-
                     THomeCategories(),
 
                     // TOP BRANDS
-                    const SizedBox(height:28),
+                    const SizedBox(height: 28),
                     Text("Top Brands", style: Theme.of(context).textTheme.titleSmall),
                     const SizedBox(height: 10),
                     TBrandHomeCategory(),
 
                     // FETCHED PRODUCT HERE
-                    const SizedBox(height:28),
+                    const SizedBox(height: 28),
                     Text("Best Deal in India", style: Theme.of(context).textTheme.titleSmall),
                     const SizedBox(height: 10),
 

@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 
+import '../../../navigation_menu.dart';
 import '../../screens/Login/mobileNumber.dart';
 class onBordingController extends GetxController{
   static onBordingController get instance => Get.find();
@@ -28,7 +29,7 @@ void nextPage() {
   if(currentPageIndex.value == 2){
     final storage = GetStorage();
     storage.write("IsFirstTime",false);
-    Get.offAll(const MobileNumberScreen());
+    Get.offAll(const NavigationMenu());
   }
   else{
     int page = currentPageIndex.value+1;

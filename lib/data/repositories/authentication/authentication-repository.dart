@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:oru_ecommerce_app/data/repositories/ApiService/authentication_service.dart';
 import 'package:oru_ecommerce_app/navigation_menu.dart';
-import '../../../Features/screens/Login/mobileNumber.dart';
 import '../../../Features/screens/onBoarding/onboarding.dart';
 
 class AuthenticationRepository extends GetxController {
@@ -43,7 +42,7 @@ class AuthenticationRepository extends GetxController {
 
       // Check if it's the first time launching the app
       deviceStorage.read("IsFirstTime") != true
-          ? Get.offAll(() => const MobileNumberScreen())
+          ? Get.offAll(() => const NavigationMenu())
           : Get.offAll(const OnBoardingScreen());
     }
   }
