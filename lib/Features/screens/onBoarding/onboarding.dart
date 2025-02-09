@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/onboarding/onboardingcontroller.dart';
-import '../widgets/onBoarding_dot_navigation.dart';
-import '../widgets/onboarding_next.dart';
-import '../widgets/onboarding_page.dart';
-import '../widgets/onboarding_skip.dart';
+import 'widgets/onBoarding_dot_navigation.dart';
+import 'widgets/onboarding_next.dart';
+import 'widgets/onboarding_page.dart';
+import 'widgets/onboarding_skip.dart';
 
 
 class OnBoardingScreen extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../controllers/onboarding/onboardingcontroller.dart';
+import '../../../controllers/onboarding/onboardingcontroller.dart';
 
 class onBoardingSkip extends StatelessWidget {
 

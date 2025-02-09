@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 
-import '../../../utils/constants/colors.dart';
-import '../../../utils/halpers/helper_function.dart';
-import '../../controllers/onboarding/onboardingcontroller.dart';
+import '../../../../utils/constants/colors.dart';
+import '../../../../utils/halpers/helper_function.dart';
+import '../../../controllers/onboarding/onboardingcontroller.dart';
 
 class onBoardingNextButton extends StatelessWidget {
   const onBoardingNextButton({

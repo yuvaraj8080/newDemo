@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oru_ecommerce_app/Features/controllers/banner_controller.dart';
+import 'package:oru_ecommerce_app/Features/controllers/homeController/banner_controller.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import '../../../../../common/shimmers/category_shimmer.dart';
 

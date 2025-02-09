@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:oru_ecommerce_app/Features/controllers/ProdcutController.dart';
+import 'package:oru_ecommerce_app/Features/controllers/homeController/ProdcutController.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/TProductCardVertical.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/brand_home_category.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/home_categories.dart';

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '../login_controller.dart';
+import '../../../controllers/Authentication/login_controller.dart';
 
 class TLoginForm extends StatelessWidget {
   const TLoginForm({Key? key}) : super(key: key);

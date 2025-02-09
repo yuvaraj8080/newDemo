@@ -1,8 +1,8 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
-import '../../data/Model/FAQ_Model.dart';
-import '../../data/Model/Product_Model.dart';
+import '../../../data/Model/FAQ_Model.dart';
+import '../../../data/Model/Product_Model.dart';
 
 class ProductController extends GetxController {
   static ProductController get instance => Get.find();

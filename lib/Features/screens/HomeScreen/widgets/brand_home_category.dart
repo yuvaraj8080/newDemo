@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../../../../../common/shimmers/category_shimmer.dart';
 import '../../../../../common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import '../../../../../utils/constants/colors.dart';
-import '../../../controllers/ProdcutController.dart';
+import '../../../controllers/homeController/ProdcutController.dart';
 
 class TBrandHomeCategory extends StatelessWidget {
   const TBrandHomeCategory({super.key});

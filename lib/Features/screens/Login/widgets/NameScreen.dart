@@ -4,7 +4,7 @@ import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/validators/validator.dart';
-import '../login_controller.dart';
+import '../../../controllers/Authentication/login_controller.dart';
 
 class Namescreen extends StatelessWidget {
   const Namescreen({super.key});
