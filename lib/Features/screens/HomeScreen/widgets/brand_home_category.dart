@@ -20,7 +20,7 @@ class TBrandHomeCategory extends StatelessWidget {
         );
       }
       return SizedBox(
-        height: 80,
+        height: 70,
         child: ListView.builder(
           shrinkWrap: true,
           itemCount: productController.brands.length,
@@ -34,7 +34,7 @@ class TBrandHomeCategory extends StatelessWidget {
                 backgroundColor: TColors.grey,
                 child: Padding(
                   padding: const EdgeInsets.all(10),
-                  child: Image.network(brand.imagePath,width:60,fit:BoxFit.contain),
+                  child: Image.network(brand.imagePath,width:50,fit:BoxFit.contain),
                 ),
               ),
             );

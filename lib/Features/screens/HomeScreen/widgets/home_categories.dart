@@ -21,7 +21,7 @@ class THomeCategories extends StatelessWidget {
         );
       }
       return SizedBox(
-        height:80,
+        height:70,
         child: ListView.builder(
           shrinkWrap: true,
           itemCount: categoryController.featuredCategories.length,
@@ -34,7 +34,7 @@ class THomeCategories extends StatelessWidget {
                 radius:100,
                 child:Padding(
                   padding: const EdgeInsets.all(10),
-                  child: Image.asset(category.image,fit:BoxFit.contain,width:60),
+                  child: Image.asset(category.image,fit:BoxFit.contain,width:50),
                 ),
               ),
             );
