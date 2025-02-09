@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oru_ecommerce_app/Features/controllers/ProdcutController.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/TProductCardVertical.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/brand_home_category.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/home_categories.dart';
@@ -20,8 +21,8 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final logoutController = Get.put(LoginController());
     final homeController = Get.put(HomeController());
+    final productController = Get.put(ProductController());
 
     List<String> names = ["Sell Used Phone", "Buy Used Phone", "Compare Price", "My Profile", "My Listing", "Services", "Register your Store", "Get the App"];
 
@@ -108,17 +109,17 @@ class HomeScreen extends StatelessWidget {
 
               //// FETCHED PRODUCT HARE ////
               Obx(() {
-                if (homeController.isLoading.value) {
+                if (productController.isLoading.value) {
                   return const TVerticalProductShimmer();
                 }
-                if (homeController.products.isEmpty) {
+                if (productController.products.isEmpty) {
                   return Center(child: Text("NO Data Found!", style: Theme.of(context).textTheme.bodyLarge));
                 }
                 return TGridLayout(
                   itemBuilder: (_, index) => TProductCardVertical(
-                    product: homeController.products[index],
+                    product: productController.products[index],
                   ),
-                  itemCount: homeController.products.length,
+                  itemCount: productController.products.length,
                 );
               })
             ],

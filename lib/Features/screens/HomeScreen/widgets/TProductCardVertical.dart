@@ -1,20 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import '../../../../common/widgets.Login_Signup/Products_cart/product_price_text.dart';
 import '../../../../common/widgets.Login_Signup/images/t_Rounded_image.dart';
 import '../../../../common/widgets.Login_Signup/texts/product_title_text.dart';
 import '../../../../common/widgets.Login_Signup/texts/t_brand_title_and_verify.dart';
+import '../../../../data/Model/Product_Model.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
 import '../../../../utils/halpers/helper_function.dart';
-import '../../../controllers/banner_controller.dart';
 
 class TProductCardVertical extends StatelessWidget {
   const TProductCardVertical({super.key, required this.product});
 
-  final Product product;
+  final ProductModel product;
 
   @override
   Widget build(BuildContext context) {

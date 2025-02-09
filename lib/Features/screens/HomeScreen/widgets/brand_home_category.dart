@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import '../../../../../common/shimmers/category_shimmer.dart';
 import '../../../../../common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import '../../../../../utils/constants/colors.dart';
+import '../../../controllers/ProdcutController.dart';
 import '../../../controllers/banner_controller.dart';
 
 class TBrandHomeCategory extends StatelessWidget {
@@ -10,11 +11,11 @@ class TBrandHomeCategory extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final categoryController = Get.put(HomeController());
+    final productController = Get.put(ProductController());
 
     return Obx(() {
-      if (categoryController.isLoading.value) return const TCategoryShimmer();
-      if (categoryController.brands.isEmpty) {
+      if (productController.isLoading.value) return const TCategoryShimmer();
+      if (productController.brands.isEmpty) {
         return Center(
           child: Text("No Brand Found", style: Theme.of(context).textTheme.bodyMedium!.apply(color: Colors.white)),
         );
@@ -23,10 +24,10 @@ class TBrandHomeCategory extends StatelessWidget {
         height: 70,
         child: ListView.builder(
           shrinkWrap: true,
-          itemCount: categoryController.brands.length,
+          itemCount: productController.brands.length,
           scrollDirection: Axis.horizontal,
           itemBuilder: (_, index) {
-            final brand = categoryController.brands[index];
+            final brand = productController.brands[index];
             return Padding(
               padding: const EdgeInsets.only(right: 20),
               child: TRoundedContainer(
