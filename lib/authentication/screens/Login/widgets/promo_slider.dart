@@ -27,24 +27,28 @@ class TPromoSlider extends StatelessWidget {
         return Column(
           children: [
             CarouselSlider(
-              items: controller.banners.map((banner) => TRoundedImage(
-                width: 250,
-                imageUlr: banner.imageUrl.isNotEmpty ? banner.imageUrl : TImages.defaultImage,
-                isNetworkImage:false,
+              items: controller.banners.map((banner) => Padding(
+                padding: const EdgeInsets.only(right:15),
+                child: TRoundedImage(
+                  imageUlr: banner.imageUrl.isNotEmpty ? banner.imageUrl : TImages.defaultImage,
+                  isNetworkImage:false,
+                ),
               )).toList(),
               options: CarouselOptions(
+
+                height:150,
                 onPageChanged: (index, _) => controller.updatePageIndicator(index),
               ),
             ),
-            const SizedBox(height: TSizes.sm8),
+            const SizedBox(height: TSizes.md16),
             Center(
               child: Obx(() => Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   for (int i = 0; i < controller.banners.length; i++)
                     TCircularContainer(
-                      width: 20,
-                      height: 5,
+                      width: 6,
+                      height:6,
                       margin: const EdgeInsets.only(right: 8),
                       backgroundColor:
                       controller.carousalCurrentIndex.value == i

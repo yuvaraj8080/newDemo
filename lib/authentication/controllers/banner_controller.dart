@@ -29,7 +29,7 @@ class BannerController extends GetxController {
         Banner(imageUrl: 'assets/images/banners/img_1.png'),
         Banner(imageUrl: 'assets/images/banners/img_2.png'),
         Banner(imageUrl: 'assets/images/banners/img_3.png'),
-        Banner(imageUrl: 'assets/images/banners/img_4.png'),
+        Banner(imageUrl: 'assets/images/banners/img_5.png'),
       ];
       isLoading.value = false;
     });
