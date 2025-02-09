@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oru_ecommerce_app/authentication/screens/Login/login_controller.dart';
-import 'package:oru_ecommerce_app/authentication/screens/Login/widgets/promo_slider.dart';
+import 'package:oru_ecommerce_app/Features/screens/Login/widgets/promo_slider.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
 import 'package:oru_ecommerce_app/utils/validators/validator.dart';
 
 import '../../../../utils/constants/colors.dart';
+import '../login_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -49,6 +49,7 @@ class HomeScreen extends StatelessWidget {
         child: Padding(
           padding: const EdgeInsets.all(16),
           child: Column(
+            crossAxisAlignment:CrossAxisAlignment.start,
             children: [
               TextFormField(
                 // controller: controller.mobileNumber,
@@ -82,8 +83,16 @@ class HomeScreen extends StatelessWidget {
                   },
                 ),
               ),
+
+
+              //// PROMO BANNER SLIDER HAR /////
               const SizedBox(height:16),
-              TPromoSlider()
+              TPromoSlider(),
+
+              //// WHATS ON YOUR MIND ///
+              const SizedBox(height:16),
+              Text("What's on your mind?", style: Theme.of(context).textTheme.titleSmall),
+
             ],
           ),
         ),

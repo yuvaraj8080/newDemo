@@ -2,12 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:oru_ecommerce_app/authentication/screens/Login/widgets/NameScreen.dart';
 import 'package:oru_ecommerce_app/data/repositories/ApiService/authentication_service.dart';
-
-import '../../../authentication/screens/Login/mobileNumber.dart';
-import '../../../authentication/screens/Login/widgets/HomeScreen.dart';
-import '../../../authentication/screens/onBoarding/onboarding.dart';
+import 'package:oru_ecommerce_app/navigation_menu.dart';
+import '../../../Features/screens/Login/mobileNumber.dart';
+import '../../../Features/screens/onBoarding/onboarding.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -35,9 +33,9 @@ class AuthenticationRepository extends GetxController {
     if (isLoggedIn) {
       final isNameUpdated = await authService.isNameUpdated();
       if (isNameUpdated) {
-        Get.off(() => const HomeScreen());
+        Get.off(() => const NavigationMenu());
       } else {
-        Get.off(() => const HomeScreen());
+        Get.off(() => const NavigationMenu());
       }
     } else {
       // No user is signed in

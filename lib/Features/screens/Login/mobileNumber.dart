@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:oru_ecommerce_app/authentication/screens/Login/widgets/login_form.dart';
-import 'package:oru_ecommerce_app/authentication/screens/Login/widgets/login_header.dart';
+import 'package:oru_ecommerce_app/Features/screens/Login/widgets/login_form.dart';
+import 'package:oru_ecommerce_app/Features/screens/Login/widgets/login_header.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../utils/halpers/helper_function.dart';
 

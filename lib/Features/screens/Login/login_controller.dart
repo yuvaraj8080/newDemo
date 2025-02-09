@@ -1,11 +1,11 @@
 import 'package:get/get.dart';
 import 'package:flutter/material.dart';
-import 'package:oru_ecommerce_app/authentication/screens/Login/widgets/NameScreen.dart';
-import 'package:oru_ecommerce_app/authentication/screens/Login/widgets/mobileOtpScreen.dart';
+import 'package:oru_ecommerce_app/Features/screens/Login/widgets/NameScreen.dart';
 import 'package:oru_ecommerce_app/utils/popups/full_screen_loader.dart';
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
 import '../../../data/repositories/ApiService/authentication_service.dart';
 import '../../../navigation_menu.dart';
+import 'widgets/mobileOtpScreen.dart';
 
 class LoginController extends GetxController {
   final apiService = ApiService();
