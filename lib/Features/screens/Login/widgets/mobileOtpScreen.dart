@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
+import 'package:pin_code_fields/pin_code_fields.dart'; // Import the package
+import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../controllers/Authentication/login_controller.dart';
@@ -17,8 +19,10 @@ class Mobileotpscreen extends StatelessWidget {
         showBackArrow: true,
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.restore_from_trash_rounded, size: 25),
+            onPressed: () {
+              Get.offAll(() => NavigationMenu());
+            },
+            icon: Icon(Icons.cancel_outlined, size: 25),
           ),
         ],
       ),
@@ -51,39 +55,53 @@ class Mobileotpscreen extends StatelessWidget {
                 ],
               ),
               Form(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 20),
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 70),
-                      TextFormField(
-                        controller: controller.otpController,
-                        decoration: const InputDecoration(
-                          labelText: 'Enter OTP',
-                        ),
-                        keyboardType: TextInputType.number,
+                child: Column(
+                  children: [
+                    const SizedBox(height: 70),
+                    PinCodeTextField(
+                      controller: controller.otpController,
+                      appContext: context,
+                      length: 4,
+                      obscureText: false,
+                      animationType: AnimationType.fade,
+                      pinTheme: PinTheme(
+                        shape: PinCodeFieldShape.box,
+                        borderRadius: BorderRadius.circular(5),
+                        fieldHeight: 50,
+                        fieldWidth: 40,
+                        inactiveColor: Colors.grey,
+                        activeColor: TColors.primaryColor,
+                        selectedColor: TColors.primaryColor,
+
                       ),
-                      const SizedBox(height: 20),
-                      Text(
-                        "Didn't receive OTP?",
-                        style: Theme.of(context).textTheme.bodySmall,
+                      enableActiveFill: true,
+                      onChanged: (value) {
+                        // You can handle the value change here if needed
+                      },
+                      beforeTextPaste: (text) {
+                        return true; // Allow pasting
+                      },
+                    ),
+                    const SizedBox(height: 20),
+                    Text(
+                      "Didn't receive OTP?",
+                      style: Theme.of(context).textTheme.bodySmall,
+                    ),
+                    Text(
+                      "Resend OTP in 0:23 Sec",
+                      style: Theme.of(context).textTheme.bodyMedium,
+                    ),
+                    const SizedBox(height: 70),
+                    SizedBox(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: () {
+                          controller.validateOtp();
+                        },
+                        child: const Text("Verify OTP"),
                       ),
-                      Text(
-                        "Resend OTP in 0:23 Sec",
-                        style: Theme.of(context).textTheme.bodyMedium,
-                      ),
-                      const SizedBox(height: 70),
-                      SizedBox(
-                        width: double.infinity,
-                        child: ElevatedButton(
-                          onPressed: () {
-                            controller.validateOtp();
-                          },
-                          child: const Text("Verify OTP"),
-                        ),
-                      ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               ),
             ],

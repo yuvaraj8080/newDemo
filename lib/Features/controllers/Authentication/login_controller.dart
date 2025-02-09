@@ -16,6 +16,27 @@ class LoginController extends GetxController {
   final nameController = TextEditingController();
   final nameFormKey = GlobalKey<FormState>();
 
+
+  @override
+  void onInit() {
+    super.onInit();
+    // Optionally check login status on initialization
+    checkLoginStatus();
+  }
+
+  Future<void> checkLoginStatus() async {
+    bool loggedInStatus = await isLoggedIn(); // Call the isLoggedIn method
+    if (loggedInStatus) {
+      Get.offAll(() => const NavigationMenu()); // Navigate to the main menu if logged in
+    }
+  }
+
+  Future<bool> isLoggedIn() async {
+    // Call the isLoggedIn method from ApiService
+    return await apiService.isLoggedIn();
+  }
+
+
   Future<void> requestOtp() async {
     if (mobileFormKey.currentState!.validate()) {
       TFullScreenLoader.openLoadingDialog("Sending Otp", TImages.loading);

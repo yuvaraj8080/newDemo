@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../utils/constants/colors.dart';
 import '../../../controllers/Authentication/login_controller.dart';
 
 class TLoginForm extends StatelessWidget {
@@ -25,9 +26,9 @@ class TLoginForm extends StatelessWidget {
                 return null;
               },
               decoration: const InputDecoration(
-                labelText: 'Enter Your Phone Number',
-                prefixText: '+91  ',
-                hintText: 'Mobile Number',
+                // labelText: 'Enter Your Phone Number',
+
+                hintText: '+91  Mobile Number',
               ),
               keyboardType: TextInputType.phone,
             ),
@@ -50,7 +51,13 @@ class TLoginForm extends StatelessWidget {
                 onPressed: () {
                   controller.requestOtp();
                 },
-                child: const Text('Sign In'),
+                child: Row(
+                  mainAxisAlignment:MainAxisAlignment.center,
+                  children: [
+                    const Text('Next '),
+                    Icon(Icons.arrow_forward, color:Colors.white)
+                  ],
+                ),
               ),
             ),
           ],

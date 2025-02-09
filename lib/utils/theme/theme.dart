@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:oru_ecommerce_app/utils/constants/colors.dart';
 import 'custom_theme/TChechboxTheme.dart';
 import 'custom_theme/appbar_theme.dart';
 import 'custom_theme/bottomSheetTheme.dart';
@@ -14,7 +15,7 @@ class TAppTheme{
     useMaterial3:true,
         fontFamily: "Poppins",
     brightness: Brightness.light,
-    primaryColor:Colors.blue,
+    primaryColor:TColors.primaryColor,
     scaffoldBackgroundColor:Colors.white,
     textTheme:TTextTheme.lightTextTheme,
     chipTheme:TChipTheme.lightChipTheme,
@@ -30,7 +31,7 @@ class TAppTheme{
     useMaterial3:true,
     fontFamily: "Poppins",
     brightness: Brightness.dark,
-    primaryColor:Colors.blue,
+    primaryColor:TColors.primaryColor,
     textTheme:TTextTheme.darkTextTheme,
     scaffoldBackgroundColor:Colors.black,
     chipTheme:TChipTheme.darkChiptheme,

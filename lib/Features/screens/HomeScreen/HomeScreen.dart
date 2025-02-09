@@ -5,6 +5,8 @@ import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/TProductCa
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/brand_home_category.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/home_categories.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/promo_slider.dart';
+import 'package:oru_ecommerce_app/Features/screens/Login/mobileNumber.dart';
+import 'package:oru_ecommerce_app/data/repositories/ApiService/authentication_service.dart';
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
 import 'package:oru_ecommerce_app/utils/validators/validator.dart';
 import '../../../common/shimmers/vertical_productShimmer.dart';
@@ -20,6 +22,9 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productController = Get.put(ProductController());
+    final apiService = ApiService();
+
+
 
     List<String> names = ["Sell Used Phone", "Buy Used Phone", "Compare Price", "My Profile", "My Listing", "Services", "Register your Store", "Get the App"];
 
@@ -39,17 +44,48 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          Container(
-            width: 80,
-            height: 30,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(5),
-              color: TColors.homeButtonColor,
-            ),
-            child: Center(child: Text("Login")),
-          )
-        ],
-      ),
+          // Use FutureBuilder to check login status
+          FutureBuilder<bool>(
+            future: apiService.isLoggedIn(), // Call the async method
+            builder: (context, snapshot) {
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return CircularProgressIndicator(); // Show a loading indicator while checking
+              } else if (snapshot.hasError) {
+                return IconButton(
+                  icon: Icon(Icons.error),
+                  onPressed: () {
+                    Get.snackbar('Error', 'Failed to check login status');
+                  },
+                );
+              } else if (snapshot.hasData && snapshot.data == true) {
+                // User is logged in
+                return IconButton(
+                  icon: Icon(Icons.notifications,size:25),
+                  onPressed: () {
+                    // Handle notification icon tap
+                    Get.snackbar('Notifications', 'You have new notifications');
+                  },
+                );
+              } else {
+                // User is not logged in
+                return GestureDetector(
+                  onTap: () {
+                    Get.to(() => MobileNumberScreen());
+                  },
+                  child: Container(
+                    width: 80,
+                    height: 30,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(5),
+                      color: TColors.homeButtonColor,
+                    ),
+                    child: Center(child: Text("Login")),
+                  ),
+                );
+              }
+            },
+          ),
+        ],      ),
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

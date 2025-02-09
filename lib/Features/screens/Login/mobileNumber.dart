@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:oru_ecommerce_app/Features/screens/Login/widgets/login_form.dart';
 import 'package:oru_ecommerce_app/Features/screens/Login/widgets/login_header.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
@@ -15,7 +16,10 @@ class MobileNumberScreen extends StatelessWidget {
     return Scaffold(
       appBar:TAppBar(
         actions:[
-          IconButton(onPressed:(){}, icon:Icon(Icons.restore_from_trash_rounded,size:25,))
+          IconButton(onPressed:(){
+            Get.back();
+          },
+              icon:Icon(Icons.cancel_outlined,size:25,))
         ],
       ),
         body: SingleChildScrollView(

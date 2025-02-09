@@ -16,18 +16,16 @@ class TLoginHeader extends StatelessWidget {
     return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const SizedBox(height:60),
-          Image(
-        height:65,
+          const SizedBox(height:40),
+          Image(height:65,
         image: AssetImage(TImages.oruApp),
       ),
       const SizedBox(height:50),
       Text(
         "Welcome",
-        style: Theme.of(context).textTheme.headlineMedium!.copyWith(color:TColors.primaryColor)
+        style:TextStyle(fontSize:30,fontWeight:FontWeight.w500,color:TColors.primaryColor)
       ),
-          Text(
-              "Sign in to continue",
+          Text("Sign in to continue",
               style: Theme.of(context).textTheme.bodySmall
           ),
     ]);

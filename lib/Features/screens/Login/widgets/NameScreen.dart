@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
+import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/validators/validator.dart';
@@ -12,13 +13,16 @@ class Namescreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(LoginController());
+
     return Scaffold(
       appBar: TAppBar(
         showBackArrow: true,
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: Icon(Icons.restore_from_trash_rounded, size: 25),
+            onPressed: () {
+              Get.offAll(() => NavigationMenu());
+            },
+            icon: Icon(Icons.cancel_outlined, size: 25),
           ),
         ],
       ),
@@ -30,7 +34,7 @@ class Namescreen extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const SizedBox(height: 60),
+                  const SizedBox(height: 40),
                   Image(
                     height: 65,
                     image: AssetImage(TImages.oruApp),
@@ -64,7 +68,7 @@ class Namescreen extends StatelessWidget {
                           hintText: "Name",
                         ),
                       ),
-                      const SizedBox(height: 70),
+                      const SizedBox(height: 80),
                       SizedBox(
                         width: double.infinity,
                         child: ElevatedButton(

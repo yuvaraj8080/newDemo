@@ -48,6 +48,7 @@ dependencies:
   lottie: ^3.0.0
   connectivity_plus: ^6.0.3
   network_manager:
+  pin_code_fields:
   shimmer:
   firebase_core:
   firebase_app_check:
