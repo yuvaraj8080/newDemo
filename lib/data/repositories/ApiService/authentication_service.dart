@@ -31,23 +31,54 @@ class ApiService {
       }),
     );
 
-    return response.statusCode == 200;
+    if (response.statusCode == 200) {
+      final cookie = response.headers['set-cookie'];
+      if (cookie != null) {
+        storage.write('cookie', cookie);
+        print('Cookie: $cookie');
+      }
+      return true;
+    } else {
+      return false;
+    }
   }
 
   Future<bool> isLoggedIn() async {
+    final cookie = storage.read('cookie') ?? '';
     final response = await http.get(
       Uri.parse('$baseUrl/isLoggedIn'),
-      headers: {'Content-Type': 'application/json'},
+      headers: {
+        'Content-Type': 'application/json',
+        'Cookie': cookie,
+      },
     );
+
+    print('Response Status: ${response.statusCode}');
+    print('Response Headers: ${response.headers}');
+    print('Response Body: ${response.body}');
 
     if (response.statusCode == 200) {
       final data = jsonDecode(response.body);
-      storage.write('csrfToken', data['csrfToken']);
-      storage.write('cookie', response.headers['set-cookie']);
-      print('CSRF Token: ${data['csrfToken']}');
-      print('Cookie: ${response.headers['set-cookie']}');
-      return true;
+      final isLoggedIn = data['isLoggedIn'];
+
+      if (isLoggedIn) {
+        final csrfToken = data['csrfToken'];
+
+        if (csrfToken != null) {
+          storage.write('csrfToken', csrfToken);
+          print('CSRF Token: $csrfToken');
+          print('Cookie: $cookie');
+          return true;
+        } else {
+          print('CSRF Token not found in the response');
+          return false;
+        }
+      } else {
+        print('User is not logged in');
+        return false;
+      }
     } else {
+      print('Failed to fetch user data');
       return false;
     }
   }
@@ -91,8 +122,6 @@ class ApiService {
 
     return response.statusCode == 200;
   }
-
-
 
   Future<bool> logout() async {
     final csrfToken = storage.read('csrfToken') ?? '';
