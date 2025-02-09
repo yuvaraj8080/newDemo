@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/brand_home_category.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/home_categories.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/promo_slider.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
@@ -99,7 +100,8 @@ class HomeScreen extends StatelessWidget {
               //// WHATS ON YOUR MIND ///
               const SizedBox(height:16),
               Text("Top Brands", style: Theme.of(context).textTheme.titleSmall),
-
+              const SizedBox(height:10),
+              TBrandHomeCategory()
             ],
           ),
         ),

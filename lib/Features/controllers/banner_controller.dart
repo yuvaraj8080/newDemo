@@ -12,6 +12,12 @@ class Category {
   Category({required this.image});
 }
 
+class Brand {
+  final String image;
+
+  Brand({required this.image});
+}
+
 class HomeController extends GetxController {
   static HomeController get instance => Get.find();
 
@@ -20,12 +26,36 @@ class HomeController extends GetxController {
   final carousalCurrentIndex = 0.obs;
   final banners = <Banner>[].obs; // Dummy banner list
   final featuredCategories = <Category>[].obs; // Dummy category list
+  final brands = <Brand>[].obs; // Dummy brand list
+
+
 
   @override
   void onInit() {
     super.onInit();
     _loadDummyBanners();
     _loadDummyCategories();
+    _loadDummyBrands();
+  }
+
+  /// LOAD DUMMY BRANDS
+  void _loadDummyBrands() {
+    isLoading.value = true;
+
+    // Simulate a network call with a delay
+    Future.delayed(Duration(seconds: 1), () {
+      brands.value = [
+        Brand(image: 'assets/icons/brands/img.png'),
+        Brand(image: 'assets/icons/brands/img_1.png'),
+        Brand(image: 'assets/icons/brands/img_2.png'),
+        Brand(image: 'assets/icons/brands/img_3.png'),
+        Brand(image: 'assets/icons/brands/img_4.png'),
+        Brand(image: 'assets/icons/brands/img_5.png'),
+        Brand(image: 'assets/icons/brands/img_6.png'),
+        Brand(image: 'assets/icons/brands/img_7.png'),
+      ];
+      isLoading.value = false;
+    });
   }
 
   /// LOAD DUMMY BANNERS
@@ -71,7 +101,10 @@ class HomeController extends GetxController {
       ];
       isLoading.value = false;
     });
+
   }
+
+
 
   /// UPDATE PAGE NAVIGATION DOTS
   void updatePageIndicator(index) {
