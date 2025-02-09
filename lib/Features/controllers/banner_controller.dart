@@ -46,7 +46,7 @@ class HomeController extends GetxController {
     Future.delayed(Duration(seconds: 1), () {
       brands.value = [
         Brand(image: 'assets/icons/brands/img.png'),
-        Brand(image: 'assets/icons/brands/img_1.png'),
+        Brand(image: 'assets/icons/brands/img_8.png'),
         Brand(image: 'assets/icons/brands/img_2.png'),
         Brand(image: 'assets/icons/brands/img_3.png'),
         Brand(image: 'assets/icons/brands/img_4.png'),
