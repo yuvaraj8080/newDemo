@@ -13,15 +13,12 @@ import '../../../common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import '../../../common/widgets.Login_Signup/layout/grid_layout.dart';
 import '../../../utils/constants/colors.dart';
-import '../../controllers/banner_controller.dart';
-import '../Login/login_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final homeController = Get.put(HomeController());
     final productController = Get.put(ProductController());
 
     List<String> names = ["Sell Used Phone", "Buy Used Phone", "Compare Price", "My Profile", "My Listing", "Services", "Register your Store", "Get the App"];
@@ -55,7 +52,7 @@ class HomeScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: const EdgeInsets.all(10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -108,6 +105,9 @@ class HomeScreen extends StatelessWidget {
               TBrandHomeCategory(),
 
               //// FETCHED PRODUCT HARE ////
+              const SizedBox(height: 16),
+              Text("Best Deal in India", style: Theme.of(context).textTheme.titleSmall),
+              const SizedBox(height: 10),
               Obx(() {
                 if (productController.isLoading.value) {
                   return const TVerticalProductShimmer();

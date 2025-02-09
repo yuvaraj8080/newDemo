@@ -19,7 +19,7 @@ class TPromoSlider extends StatelessWidget {
     final controller = Get.put(HomeController()); // Initialize your controller properly
     return Obx(() {
       /// LOADER
-      if (controller.isLoading.value) return const TShimmerEffect(width: double.infinity, height: 190);
+      if (controller.isLoading.value) return const TShimmerEffect(width: double.infinity, height: 140);
 
       if (controller.banners.isEmpty) {
         return const Center(child: Text("No Banner Found"));

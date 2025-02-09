@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:iconsax/iconsax.dart';
 import '../../../../common/widgets.Login_Signup/images/t_Rounded_image.dart';
 import '../../../../common/widgets.Login_Signup/texts/product_title_text.dart';
-import '../../../../common/widgets.Login_Signup/texts/t_brand_title_and_verify.dart';
 import '../../../../data/Model/Product_Model.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
@@ -19,11 +18,10 @@ class TProductCardVertical extends StatelessWidget {
     final dark = THelperFunction.isDarkMode(context);
 
     return Card(
-      elevation: 3,
+      elevation:1,
       shadowColor: dark ? Colors.white : Colors.black,
       child: GestureDetector(
         child: Container(
-          padding: const EdgeInsets.all(2),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             color: dark ? TColors.dark : TColors.light,
@@ -31,25 +29,25 @@ class TProductCardVertical extends StatelessWidget {
           child: Column(
             children: [
               Container(
-                height: 150, // Fixed image height
-                padding: const EdgeInsets.all(10),
+                width:double.infinity,
                 child: Stack(
                   children: [
                     Center(
                       child: TRoundedImage(
+                        height:130,
                         backgroundColor: Colors.transparent,
-                        imageUlr: product.thumbnail,
+                        imageUlr: product.defaultImage.fullImage,
                         applyImageRadius: true,
-                        isNetworkImage: true,
+                        isNetworkImage: true,fit:BoxFit.cover,
                       ),
                     ),
                     // Favorite Icon Button
                     Positioned(
-                      top: -15,
-                      right: -10,
+                      top: -3,
+                      right: -8,
                       child: IconButton(
                         onPressed: () {},
-                        icon: Icon(Icons.link),
+                        icon: Icon(Iconsax.heart,size:30),
                         // TFavoriteIcon(productId: product.id),
                       ),
                     ),
@@ -58,49 +56,62 @@ class TProductCardVertical extends StatelessWidget {
               ),
               Expanded( // Make the attributes below the image flexible
                 child: Padding(
-                  padding: const EdgeInsets.only(left: 8),
+                  padding: const EdgeInsets.only(left:4),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      TProductTitleText(title: product.title, smallSize: true),
+                      const SizedBox(height: TSizes.sm8),
+                      // Product Title
+                      TProductTitleText(title: product.marketingName,smallSize: true),
+                      const SizedBox(height:8),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          TBrandTitleWithVerifiedIcon(
-                            title: product.brand?.make ?? '',
-                          ),
-                          const Icon(Iconsax.verify, color: TColors.primaryColor, size: 15),
+                          Text("${product.deviceRam}/${product.deviceStorage} •",style: Theme.of(context).textTheme.labelMedium),
+                          Text("${product.deviceCondition}",style: Theme.of(context).textTheme.labelMedium)
                         ],
                       ),
-                      const SizedBox(height: TSizes.sm8),
-                      // Price and Button
+                      const SizedBox(height: TSizes.xs4),
+
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Flexible(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                if (product.productType == "single" && product.salePrice > 0)
-                                  Text(
-                                    "₹${product.price.toString()}",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelSmall!
-                                        .apply(decoration: TextDecoration.lineThrough),
-                                  ),
-                                // Main Product Price
-                              ],
+                          Text("₹ ${product.discountedPrice}",style: Theme.of(context).textTheme.headlineSmall),
+                          const SizedBox(width: TSizes.sm8),
+
+                          Text(" ${product.originalPrice}",
+                            style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                              decoration: TextDecoration.lineThrough, // Adds a cross line
+                              decorationThickness: 2, // Optional: Adjust thickness
                             ),
-                          ),
+                          )
                         ],
                       ),
+                      // Price and Button
                     ],
                   ),
                 ),
               ),
+              Container(
+                  height:25,
+                  decoration:BoxDecoration(
+                      borderRadius:BorderRadius.only(bottomLeft:Radius.circular(10),bottomRight:Radius.circular(10)),
+                      color:dark ? TColors.darkGrey : TColors.grey,
+                  ),
+                child: Padding(
+                  padding: const EdgeInsets.all(4),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("${product.listingState}${product.listingLocation}",style:TextStyle(fontSize:8)),
+                      Text("${product.verifiedDate}",style:TextStyle(fontSize:8))
+                    ],
+                  ),
+                ),
+              )
             ],
           ),
+
         ),
       ),
     );

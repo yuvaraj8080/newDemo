@@ -4,7 +4,6 @@ import '../../../../../common/shimmers/category_shimmer.dart';
 import '../../../../../common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import '../../../../../utils/constants/colors.dart';
 import '../../../controllers/ProdcutController.dart';
-import '../../../controllers/banner_controller.dart';
 
 class TBrandHomeCategory extends StatelessWidget {
   const TBrandHomeCategory({super.key});
@@ -21,7 +20,7 @@ class TBrandHomeCategory extends StatelessWidget {
         );
       }
       return SizedBox(
-        height: 70,
+        height: 80,
         child: ListView.builder(
           shrinkWrap: true,
           itemCount: productController.brands.length,
@@ -35,7 +34,7 @@ class TBrandHomeCategory extends StatelessWidget {
                 backgroundColor: TColors.grey,
                 child: Padding(
                   padding: const EdgeInsets.all(10),
-                  child: Image.network(brand.imagePath,width:50,fit:BoxFit.contain),
+                  child: Image.network(brand.imagePath,width:60,fit:BoxFit.contain),
                 ),
               ),
             );

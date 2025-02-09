@@ -3,10 +3,6 @@ import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
 import '../../data/Model/Product_Model.dart';
 
-
-
-
-
 class ProductController extends GetxController {
   static ProductController get instance => Get.find();
 
@@ -20,8 +16,6 @@ class ProductController extends GetxController {
     fetchBrands();
     fetchProducts();
   }
-
-
 
   /// FETCH BRANDS FROM API
   Future<void> fetchBrands() async {
@@ -47,37 +41,34 @@ class ProductController extends GetxController {
 
   /// FETCH PRODUCTS FROM API
   Future<void> fetchProducts() async {
-    isLoading.value = true;
-    final response = await http.post(
-      Uri.parse('http://40.90.224.241:5000/filter'),
-      headers: {'Content-Type': 'application/json'},
-      body: json.encode({
-        "filter": {
-          "condition": ["Like New", "Fair"],
-          "make": ["Samsung"],
-          "storage": ["16 GB", "32 GB"],
-          "ram": ["4 GB"],
-          "warranty": ["Brand Warranty", "Seller Warranty"],
-          "priceRange": [40000, 175000],
-          "verified": true,
-          "sort": {"price": 1}, // Price Low To High
-          "page": 1
-        }
-      }),
-    );
+    final url = Uri.parse("http://40.90.224.241:5000/filter");
 
-    if (response.statusCode == 200) {
-      final data = json.decode(response.body);
-      if (data['status'] == 'SUCCESS') {
-        final List<dynamic> productData = data['dataObject'];
-        products.value = productData.map((item) => ProductModel.fromJson(item)).toList();
+    final Map<String, dynamic> requestBody = {
+      "filter": {}
+    };
+
+    try {
+      final response = await http.post(
+        url,
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: jsonEncode(requestBody),
+      );
+
+      if (response.statusCode == 200) {
+        final Map<String, dynamic> responseData = jsonDecode(response.body);
+        final List<dynamic> data = responseData['data']['data'];
+
+        // Convert JSON response to a list of ProductModel objects
+        products.value = data.map((item) => ProductModel.fromJson(item)).toList();
+
+        print("Products fetched successfully!");
+      } else {
+        print("Failed to fetch products: ${response.statusCode}");
       }
-    } else {
-      // Handle error
-      print('Failed to load products');
+    } catch (e) {
+      print("Error fetching products: $e");
     }
-
-    isLoading.value = false;
   }
-
 }
