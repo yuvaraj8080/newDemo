@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
+import '../../data/Model/FAQ_Model.dart';
 import '../../data/Model/Product_Model.dart';
 
 class ProductController extends GetxController {
@@ -9,12 +10,14 @@ class ProductController extends GetxController {
   final isLoading = false.obs;
   final brands = <Brand>[].obs; // Dummy brand list
   final products = <ProductModel>[].obs; // Products list
+  final FastList = <FaqModel>[].obs; // FAQs list
 
   @override
   void onInit() {
     super.onInit();
     fetchBrands();
     fetchProducts();
+    fetchFaqs();
   }
 
   /// FETCH BRANDS FROM API
@@ -71,4 +74,25 @@ class ProductController extends GetxController {
       print("Error fetching products: $e");
     }
   }
+
+
+  /// FETCH FAQs FROM API
+  Future<void> fetchFaqs() async {
+    try {
+      final response = await http.get(Uri.parse("http://40.90.224.241:5000/faq"));
+
+      if (response.statusCode == 200) {
+        final data = json.decode(response.body);
+        final List<dynamic> faqList = data['FAQs'];
+        FastList.value = faqList.map((json) => FaqModel.fromJson(json)).toList();
+
+        print("FAQs fetched successfully!");
+      } else {
+        throw Exception("Failed to load FAQs");
+      }
+    } catch (e) {
+      print("Error fetching FAQs: $e");
+    }
+  }
+
 }

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:iconsax/iconsax.dart';
 import 'package:oru_ecommerce_app/Features/controllers/ProdcutController.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/TProductCardVertical.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/brand_home_category.dart';
@@ -13,6 +14,8 @@ import '../../../common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import '../../../common/widgets.Login_Signup/layout/grid_layout.dart';
 import '../../../utils/constants/colors.dart';
+import '../../../utils/constants/sizes.dart';
+import '../../../utils/halpers/helper_function.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -121,7 +124,53 @@ class HomeScreen extends StatelessWidget {
                   ),
                   itemCount: productController.products.length,
                 );
-              })
+              }),
+
+
+              ///// FAQ SECTION THROUGH API ////
+              const SizedBox(height: 18),
+              Row(
+                mainAxisAlignment:MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Frequently Asked Questions", style: Theme.of(context).textTheme.titleMedium),
+                  Icon(Icons.arrow_forward_ios),
+                ],
+              ),
+
+              const SizedBox(height: 10),
+
+              Obx(() {
+                if (productController.isLoading.value) {
+                  return Center(child: CircularProgressIndicator());
+                }
+
+                if (productController.FastList.isEmpty) {
+                  return Center(child: Text("No FAQs available"));
+                }
+                return ListView.builder(
+                  shrinkWrap: true,
+                  itemCount: productController.FastList.length,
+                  itemBuilder: (context, index) {
+                    final faq = productController.FastList[index];
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: ExpansionTile(
+                        title: Text(faq.question),
+                        backgroundColor: THelperFunction.isDarkMode(context) ? TColors.darkGrey : TColors.grey,
+                        collapsedBackgroundColor: THelperFunction.isDarkMode(context) ? TColors.darkGrey : TColors.light,
+                        expandedCrossAxisAlignment: CrossAxisAlignment.start,
+                        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.0)),
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Text(faq.answer),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                );
+              }),
             ],
           ),
         ),
