@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 import 'Features/screens/Login/widgets/FovouriteScreen.dart';
-import 'Features/screens/Login/widgets/HomeScreen.dart';
+import 'Features/screens/HomeScreen/HomeScreen.dart';
 
 
 class NavigationMenu extends StatelessWidget {

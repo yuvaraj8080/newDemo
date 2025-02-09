@@ -16,7 +16,7 @@ class TPromoSlider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(BannerController()); // Initialize your controller properly
+    final controller = Get.put(HomeController()); // Initialize your controller properly
     return Obx(() {
       /// LOADER
       if (controller.isLoading.value) return const TShimmerEffect(width: double.infinity, height: 190);

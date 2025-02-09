@@ -7,7 +7,7 @@ import '../../../utils/constants/sizes.dart';
 import '../../../utils/halpers/helper_functions.dart';
 
 class TVerticalImageText extends StatelessWidget {
-  final String image, title;
+  final String image;
   final Color textColor;
   final Color? backgroundColor;
   final void Function()? onTap;
@@ -15,7 +15,6 @@ class TVerticalImageText extends StatelessWidget {
   const TVerticalImageText({
     super.key,
     required this.image,
-    required this.title,
     this.textColor = TColors.white,
     this.backgroundColor = TColors.white,
     this.onTap,
@@ -41,20 +40,8 @@ class TVerticalImageText extends StatelessWidget {
               child: Center(
                 child:
                 CachedNetworkImage(
-                    imageUrl:image.isNotEmpty ? image : '',fit:BoxFit.cover
+                    imageUrl:image.isNotEmpty ? image :image,fit:BoxFit.cover
                 )
-              ),
-            ),
-            const SizedBox(height: TSizes.spaceBtwItems16 / 2),
-            SizedBox(
-              width: 60,
-              child: Center(
-                child: Text(
-                  title,
-                  style: Theme.of(context).textTheme.labelMedium?.apply(color: textColor),
-                  maxLines: 1,
-                  overflow: TextOverflow.ellipsis,
-                ),
               ),
             ),
           ],

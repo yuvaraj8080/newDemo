@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oru_ecommerce_app/Features/screens/Login/widgets/promo_slider.dart';
+import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/home_categories.dart';
+import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/promo_slider.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
 import 'package:oru_ecommerce_app/utils/validators/validator.dart';
 
-import '../../../../utils/constants/colors.dart';
-import '../login_controller.dart';
+import '../../../utils/constants/colors.dart';
+import '../Login/login_controller.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -92,6 +93,12 @@ class HomeScreen extends StatelessWidget {
               //// WHATS ON YOUR MIND ///
               const SizedBox(height:16),
               Text("What's on your mind?", style: Theme.of(context).textTheme.titleSmall),
+              THomeCategories(),
+
+
+              //// WHATS ON YOUR MIND ///
+              const SizedBox(height:16),
+              Text("Top Brands", style: Theme.of(context).textTheme.titleSmall),
 
             ],
           ),
