@@ -10,6 +10,7 @@ import 'package:oru_ecommerce_app/data/repositories/ApiService/authentication_se
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
 import '../../../common/shimmers/vertical_productShimmer.dart';
 import '../../../common/widgets.Login_Signup/appBar/appbar.dart';
+import '../../../common/widgets.Login_Signup/layout/CenterFloatingButton.dart';
 import '../../../common/widgets.Login_Signup/layout/TExpanstionTileFAQ.dart';
 import '../../../common/widgets.Login_Signup/layout/TRounded_ListView.dart';
 import '../../../common/widgets.Login_Signup/layout/grid_layout.dart';
@@ -37,6 +38,8 @@ class HomeScreen extends StatelessWidget {
     ];
 
     return Scaffold(
+      floatingActionButton: CenterFloatingButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: TAppBar(
         title: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -194,5 +197,6 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
 
 
