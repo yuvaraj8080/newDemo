@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../Features/controllers/FilterController/FilterController.dart';
+import '../../../utils/constants/colors.dart';
 
 class FilterBottomSheet extends StatelessWidget {
   final FilterController controller = Get.put(FilterController());
@@ -17,6 +18,7 @@ class FilterBottomSheet extends StatelessWidget {
       child: Column(
         children: [
           _buildHeader(),
+          Divider(),
           Expanded(
             child: Obx(() {
               if (controller.filters.isEmpty) {
@@ -69,9 +71,8 @@ class FilterBottomSheet extends StatelessWidget {
       title: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(title),
-          Obx(() => Text(
-            controller.getSelectedCount(title) > 0
+          Text(title,style:TextStyle(fontWeight: FontWeight.w700,)),
+          Obx(() => Text(controller.getSelectedCount(title) > 0
                 ? '${controller.getSelectedCount(title)}'
                 : '',
             style: TextStyle(color: Colors.amber),
@@ -90,7 +91,7 @@ class FilterBottomSheet extends StatelessWidget {
       padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       child: TextField(
         decoration: InputDecoration(
-          hintText: 'Search here',
+          hintText: 'Search brand here',
           prefixIcon: Icon(Icons.search, color: Colors.amber),
           border: OutlineInputBorder(
             borderRadius: BorderRadius.circular(30),
@@ -160,29 +161,43 @@ class FilterBottomSheet extends StatelessWidget {
         color: Colors.white,
         border: Border(top: BorderSide(color: Colors.grey[300]!)),
       ),
-      child: Row(
+      child:Obx(()=> Row(
         children: [
-          TextButton(
-            onPressed: controller.clearFilters,
-            child: Text(
-              'Clear All',
-              style: TextStyle(color: Colors.grey),
-            ),
-          ),
-
-          Spacer(),
-
           Expanded(
             child: ElevatedButton(
-              onPressed: controller.applyFilters,
+              onPressed: () {
+                controller.clearFilters(); // Clear selection
+              },
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.amber,
-                padding: EdgeInsets.symmetric(vertical: 16),
+                backgroundColor: Colors.white,
               ),
-              child: Text('Apply'),
+              child: Text(
+                "Clear",
+                style: TextStyle(color: TColors.secondary),
+              ),
+            ),
+          ),
+          const SizedBox(width: 15),
+          Expanded(
+            child: ElevatedButton(
+              onPressed: () {
+                // Handle apply action
+                if (controller.selectedFilters.value.isNotEmpty) {
+                  // Apply the selected sort option
+                  controller.applyFilters(); // Clear selection
+                }
+              },
+              style: ElevatedButton.styleFrom(
+                backgroundColor: controller.selectedFilters.value.isEmpty
+                    ? TColors.grey
+                    : Colors.amber,
+              ),
+              child: const Text("Apply"),
             ),
           ),
         ],
+      ),
+
       ),
     );
   }
