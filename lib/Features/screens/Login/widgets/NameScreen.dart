@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oru_ecommerce_app/Features/screens/HomeScreen/HomeScreen.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
-import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../../utils/validators/validator.dart';
@@ -20,7 +20,7 @@ class Namescreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Get.offAll(() => NavigationMenu());
+              Get.offAll(() => HomeScreen());
             },
             icon: Icon(Icons.cancel_outlined, size: 25),
           ),
