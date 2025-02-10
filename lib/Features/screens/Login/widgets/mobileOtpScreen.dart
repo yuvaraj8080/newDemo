@@ -72,7 +72,6 @@ class Mobileotpscreen extends StatelessWidget {
                         inactiveColor: Colors.grey,
                         activeColor: TColors.primaryColor,
                         selectedColor: TColors.primaryColor,
-
                       ),
                       enableActiveFill: true,
                       onChanged: (value) {
@@ -82,6 +81,8 @@ class Mobileotpscreen extends StatelessWidget {
                         return true; // Allow pasting
                       },
                     ),
+
+
                     const SizedBox(height: 20),
                     Text(
                       "Didn't receive OTP?",

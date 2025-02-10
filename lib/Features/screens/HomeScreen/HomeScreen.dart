@@ -8,7 +8,6 @@ import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/promo_slid
 import 'package:oru_ecommerce_app/Features/screens/Login/mobileNumber.dart';
 import 'package:oru_ecommerce_app/data/repositories/ApiService/authentication_service.dart';
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
-import 'package:oru_ecommerce_app/utils/validators/validator.dart';
 import '../../../common/shimmers/vertical_productShimmer.dart';
 import '../../../common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../common/widgets.Login_Signup/layout/TExpanstionTileFAQ.dart';
@@ -47,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                 IconButton(
                   icon:Icon(Icons.list,size:36),
                   onPressed:(){
-                    Get.snackbar('Open Drawer', 'Swap right from left corner');
+                    Get.to(()=>SellScreen());
                   },
                 ),
                 Image.asset(TImages.oruApp, width: 60),
@@ -106,7 +105,6 @@ class HomeScreen extends StatelessWidget {
           ),
         ],
       ),
-      drawer: CustomDrawer(), // Add the drawer here
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
