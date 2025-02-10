@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oru_ecommerce_app/common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
-
+import '../../../../common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import '../../../../common/widgets.Login_Signup/images/t_Rounded_image.dart';
 import '../../../../navigation_menu.dart';
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/image_string.dart';
 import '../../../controllers/Authentication/login_controller.dart';
+import '../../../controllers/homeController/banner_controller.dart';
 
 class CustomDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final loginController = Get.put(LoginController());
+    final homeController = Get.put(HomeController());
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -78,8 +79,8 @@ class CustomDrawer extends StatelessWidget {
                   title: Text('Logout', style: Theme.of(context).textTheme.titleLarge),
                 ),
                 SizedBox(height: 190),
-                // Adding the six boxes at the bottom
-                GridView.builder(
+                // Adding the six boxes at the bottom with images from homeController
+                Obx(() => GridView.builder(
                   shrinkWrap: true,
                   physics: NeverScrollableScrollPhysics(),
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -89,15 +90,18 @@ class CustomDrawer extends StatelessWidget {
                     childAspectRatio: 2,
                   ),
                   itemBuilder: (context, index) {
-                  return TRoundedContainer(
-                    showBorder: true,
-                    borderColor: TColors.grey,
-                    radius:10,
-                    child:Center(child: Text("Boxes")));
-
+                  final drawerImages = homeController.drawerImages[index];
+                    return TRoundedContainer(
+                      showBorder: true,
+                      borderColor: TColors.grey,
+                      radius: 10,
+                      child: Center(
+                        child: Image.network(d), // Assuming DrawerImages has imageUrl property
+                      ),
+                    );
                   },
-                  itemCount: 6,
-                ),
+                  itemCount: homeController.drawerImages.length,
+                )),
               ],
             ),
           ),

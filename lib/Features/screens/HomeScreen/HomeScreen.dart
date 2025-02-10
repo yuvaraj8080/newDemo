@@ -14,6 +14,7 @@ import '../../../common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../common/widgets.Login_Signup/layout/TExpanstionTileFAQ.dart';
 import '../../../common/widgets.Login_Signup/layout/TRounded_ListView.dart';
 import '../../../common/widgets.Login_Signup/layout/grid_layout.dart';
+import '../../../common/widgets.Login_Signup/layout/searchTextFormField.dart';
 import '../../../utils/constants/colors.dart';
 import 'widgets/sideBar_drawer.dart';
 
@@ -114,16 +115,7 @@ class HomeScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                TextFormField(
-                  validator: (value) => TValidator.validateEmptyText("Name", value),
-                  decoration: InputDecoration(
-                    prefixIcon: Icon(Icons.search),
-                    prefixIconColor: TColors.homeButtonColor,
-                    hintStyle: TextStyle(fontSize: 13, fontWeight: FontWeight.w400),
-                    hintText: 'Search phone with make, model..',
-                    suffixIcon: Icon(Icons.mic_none_outlined),
-                  ),
-                ),
+                SearchATextFormField(),
                 const SizedBox(height: 16),
                 TScrollableListView(names: names),
               ],
@@ -204,3 +196,5 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
+
+

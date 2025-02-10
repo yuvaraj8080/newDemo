@@ -13,7 +13,11 @@ class Category {
   Category({required this.image});
 }
 
+class DrawerImages {
+  final String drawerImage;
 
+  DrawerImages({required this.drawerImage});
+}
 
 
 class HomeController extends GetxController {
@@ -23,6 +27,7 @@ class HomeController extends GetxController {
   final isLoading = false.obs;
   final carousalCurrentIndex = 0.obs;
   final banners = <Banner>[].obs; // Dummy banner list
+  final drawerImages = <DrawerImages>[].obs; // Dummy banner list
   final featuredCategories = <Category>[].obs; // Dummy category list
 
 
@@ -31,7 +36,29 @@ class HomeController extends GetxController {
     super.onInit();
     _loadDummyBanners();
     _loadDummyCategories();
+    loadDrawerDummyImages();
   }
+
+  /// LOAD DRAWER DUMMY IMAGES ////
+  void loadDrawerDummyImages() {
+    isLoading.value = true;
+
+    // Simulate a network call with a delay
+    Future.delayed(Duration(seconds: 1), () {
+      drawerImages.value = [
+        DrawerImages(drawerImage: 'assets/images/images/img_2.png'),
+        DrawerImages(drawerImage: 'assets/images/images/img_3.png'),
+        DrawerImages(drawerImage: 'assets/images/images/img_4.png'),
+        DrawerImages(drawerImage: 'assets/images/images/img_5.png'),
+        DrawerImages(drawerImage: 'assets/images/images/img_6.png'),
+        DrawerImages(drawerImage: 'assets/images/images/img_7.png'),
+      ];
+      isLoading.value = false;
+    });
+  }
+
+
+
 
 
   /// LOAD DUMMY BANNERS
@@ -50,6 +77,9 @@ class HomeController extends GetxController {
       isLoading.value = false;
     });
   }
+
+
+
 
   /// LOAD DUMMY CATEGORIES
   void _loadDummyCategories() {
