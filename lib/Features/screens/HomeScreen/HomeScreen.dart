@@ -15,7 +15,7 @@ import '../../../common/widgets.Login_Signup/layout/TRounded_ListView.dart';
 import '../../../common/widgets.Login_Signup/layout/grid_layout.dart';
 import '../../../common/widgets.Login_Signup/layout/searchTextFormField.dart';
 import '../../../utils/constants/colors.dart';
-import 'widgets/sideBar_drawer.dart';
+import 'widgets/SellScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
