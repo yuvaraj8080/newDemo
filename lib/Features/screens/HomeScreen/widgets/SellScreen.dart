@@ -13,6 +13,7 @@ import '../../../controllers/homeController/banner_controller.dart';
 class SellScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+
     final loginController = Get.put(LoginController());
     final homeController = Get.put(HomeController());
 
