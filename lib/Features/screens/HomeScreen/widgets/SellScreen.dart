@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oru_ecommerce_app/Features/screens/Login/mobileNumber.dart';
 import '../../../../common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../../common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
 import '../../../../common/widgets.Login_Signup/images/t_Rounded_image.dart';
@@ -65,11 +66,12 @@ class SellScreen extends StatelessWidget {
                 child: Text("Sell Your Phone"),
               ),
             ),
+
             SizedBox(height: 20),
             ListTile(
               onTap: () {
                 loginController.logout();
-                Get.back();
+                Get.offAll(()=>MobileNumberScreen());
               },
               leading: Icon(Icons.logout, size: 30),
               title: Text('Logout', style: Theme.of(context).textTheme.titleLarge),
@@ -77,6 +79,7 @@ class SellScreen extends StatelessWidget {
 
             Spacer(),
             Spacer(),
+
             Expanded(
               child: Obx(() => SizedBox(
                 child: GridView.builder(

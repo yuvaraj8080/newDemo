@@ -35,6 +35,8 @@ class AuthenticationRepository extends GetxController {
       } else {
         Get.off(() => const HomeScreen());
       }
+    }else{
+      Get.off(()=>const HomeScreen());
     }
   }
 }

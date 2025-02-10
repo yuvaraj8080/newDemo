@@ -110,6 +110,7 @@ class HomeController extends GetxController {
     });
   }
 
+
   /// UPDATE PAGE NAVIGATION DOTS
   void updatePageIndicator(index) {
     carousalCurrentIndex.value = index;

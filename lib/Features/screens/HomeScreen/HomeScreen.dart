@@ -9,6 +9,8 @@ import 'package:oru_ecommerce_app/Features/screens/Login/mobileNumber.dart';
 import 'package:oru_ecommerce_app/data/repositories/ApiService/authentication_service.dart';
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
 import '../../../common/shimmers/vertical_productShimmer.dart';
+import '../../../common/widgets.Login_Signup/Choice/sortAndFilterBottomSheet.dart';
+import '../../../common/widgets.Login_Signup/Choice/sortFilterList.dart';
 import '../../../common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../common/widgets.Login_Signup/layout/CenterFloatingButton.dart';
 import '../../../common/widgets.Login_Signup/layout/TExpanstionTileFAQ.dart';
@@ -37,6 +39,32 @@ class HomeScreen extends StatelessWidget {
       "Get the App"
     ];
 
+    List<String> sortFilterList = [
+      "⬆⬇ Sort ",
+      " ☰  Filter  ",
+      "Nearby Deals",
+      "Deals in 250km",
+      "Verified Deals",
+      "   Apple   ",
+      "Samsung",
+      "Under Warranty"
+    ];
+
+    // Define the actions for each sort/filter option
+    List<VoidCallback> sortFilterActions = [
+          () {SortBottomSheet().showSortBottomSheet(context);},
+          () {
+        // Action for "Filter"
+        print("Filter tapped");
+      },
+          () {},
+          () {},
+          () {},
+          () {},
+          () {},
+          () {},
+    ];
+
     return Scaffold(
       floatingActionButton: CenterFloatingButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
@@ -49,7 +77,6 @@ class HomeScreen extends StatelessWidget {
                 IconButton(
                   icon:Icon(Icons.list,size:36),
                   onPressed:(){
-                    Get.to(()=>SellScreen());
                   },
                 ),
                 Image.asset(TImages.oruApp, width: 60),
@@ -149,7 +176,12 @@ class HomeScreen extends StatelessWidget {
                     // FETCHED PRODUCT HERE
                     const SizedBox(height: 28),
                     Text("Best Deal in India", style: Theme.of(context).textTheme.titleSmall),
-                    const SizedBox(height: 10),
+                    const SizedBox(height: 15),
+
+                    //// SORTING AND FILTER SECTION HARE ////
+                    SortFilterList(sortFilterList:sortFilterList,onSortFilterTap:sortFilterActions,),
+                    const SizedBox(height:25),
+
 
                     Obx(() {
                       if (productController.isLoading.value) {
