@@ -15,8 +15,9 @@ class Category {
 
 class DrawerImages {
   final String drawerImage;
+  final String label;
 
-  DrawerImages({required this.drawerImage});
+  DrawerImages({required this.label,required this.drawerImage});
 }
 
 
@@ -46,12 +47,12 @@ class HomeController extends GetxController {
     // Simulate a network call with a delay
     Future.delayed(Duration(seconds: 1), () {
       drawerImages.value = [
-        DrawerImages(drawerImage: 'assets/images/images/img_2.png'),
-        DrawerImages(drawerImage: 'assets/images/images/img_3.png'),
-        DrawerImages(drawerImage: 'assets/images/images/img_4.png'),
-        DrawerImages(drawerImage: 'assets/images/images/img_5.png'),
-        DrawerImages(drawerImage: 'assets/images/images/img_6.png'),
-        DrawerImages(drawerImage: 'assets/images/images/img_7.png'),
+        DrawerImages(drawerImage: 'assets/images/images/img_2.png',label: 'How to Buy'),
+        DrawerImages(drawerImage: 'assets/images/images/img_3.png',label:'How to Sell'),
+        DrawerImages(drawerImage: 'assets/images/images/img_4.png',label:'Oru Guide'),
+        DrawerImages(drawerImage: 'assets/images/images/img_5.png',label:"About Us"),
+        DrawerImages(drawerImage: 'assets/images/images/img_6.png',label:"Privacy Policy"),
+        DrawerImages(drawerImage: 'assets/images/images/img_7.png',label:"FAQs"),
       ];
       isLoading.value = false;
     });

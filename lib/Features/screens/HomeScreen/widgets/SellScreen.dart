@@ -78,29 +78,37 @@ class SellScreen extends StatelessWidget {
             Spacer(),
             Spacer(),
             Expanded(
-              child: Obx(() => GridView.builder(
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 3,
-                  crossAxisSpacing: 14,
-                  mainAxisSpacing: 20,
-                  childAspectRatio: 2,
-                ),
-                itemBuilder: (context, index) {
-                  final drawerImage = homeController.drawerImages[index];
-                  return TRoundedContainer(
-                    showBorder: true,
-                    borderColor: TColors.grey,
-                    radius: 10,
-                    child: Center(
-                      child: Image.asset(
-                        drawerImage.drawerImage,
-                        width:30,
-                        fit: BoxFit.cover, // Adjust the fit as needed
+              child: Obx(() => SizedBox(
+                child: GridView.builder(
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 3,
+                    crossAxisSpacing: 14,
+                    mainAxisSpacing: 20,
+                    childAspectRatio: 2,
+                  ),
+                  itemBuilder: (context, index) {
+                    final drawerImage = homeController.drawerImages[index];
+                    return TRoundedContainer(
+                      showBorder: true,
+                      borderColor: TColors.grey,
+                      radius: 10,
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              drawerImage.drawerImage,
+                              width:30,
+                              fit: BoxFit.cover, // Adjust the fit as needed
+                            ),
+                            SizedBox(height:3),
+                            Text(drawerImage.label,style: Theme.of(context).textTheme.labelMedium)
+                          ],
+                        ),
                       ),
-                    ),
-                  );
-                },
-                itemCount: homeController.drawerImages.length,
+                    );
+                  },
+                  itemCount: homeController.drawerImages.length,
+                ),
               )),
             ),
           ],
