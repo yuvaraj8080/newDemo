@@ -114,7 +114,8 @@ class SellScreen extends StatelessWidget {
                   itemCount: homeController.drawerImages.length,
                 ),
               )),
-            ),
+            )
+
           ],
         ),
       ),
