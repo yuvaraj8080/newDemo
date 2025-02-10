@@ -9,7 +9,8 @@ import 'package:oru_ecommerce_app/Features/screens/Login/mobileNumber.dart';
 import 'package:oru_ecommerce_app/data/repositories/ApiService/authentication_service.dart';
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
 import '../../../common/shimmers/vertical_productShimmer.dart';
-import '../../../common/widgets.Login_Signup/Choice/sortAndFilterBottomSheet.dart';
+import '../../../common/widgets.Login_Signup/Choice/filterBottomSheet.dart';
+import '../../../common/widgets.Login_Signup/Choice/sortBottomSheet.dart';
 import '../../../common/widgets.Login_Signup/Choice/sortFilterList.dart';
 import '../../../common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../common/widgets.Login_Signup/layout/CenterFloatingButton.dart';
@@ -18,7 +19,6 @@ import '../../../common/widgets.Login_Signup/layout/TRounded_ListView.dart';
 import '../../../common/widgets.Login_Signup/layout/grid_layout.dart';
 import '../../../common/widgets.Login_Signup/layout/searchTextFormField.dart';
 import '../../../utils/constants/colors.dart';
-import 'widgets/SellScreen.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -54,8 +54,12 @@ class HomeScreen extends StatelessWidget {
     List<VoidCallback> sortFilterActions = [
           () {SortBottomSheet().showSortBottomSheet(context);},
           () {
-        // Action for "Filter"
-        print("Filter tapped");
+            showModalBottomSheet(
+              context: context,
+              isScrollControlled: true,
+              backgroundColor: Colors.transparent,
+              builder: (context) => FilterBottomSheet(),
+            );
       },
           () {},
           () {},
