@@ -4,7 +4,6 @@ import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:oru_ecommerce_app/data/repositories/ApiService/authentication_service.dart';
 import 'package:oru_ecommerce_app/navigation_menu.dart';
-import '../../../Features/screens/onBoarding/onboarding.dart';
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -36,14 +35,6 @@ class AuthenticationRepository extends GetxController {
       } else {
         Get.off(() => const NavigationMenu());
       }
-    } else {
-      // No user is signed in
-      deviceStorage.writeIfNull("IsFirstTime", true);
-
-      // Check if it's the first time launching the app
-      deviceStorage.read("IsFirstTime") != true
-          ? Get.offAll(() => const NavigationMenu())
-          : Get.offAll(const OnBoardingScreen());
     }
   }
 }
