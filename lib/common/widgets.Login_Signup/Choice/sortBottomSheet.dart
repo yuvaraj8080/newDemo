@@ -11,7 +11,7 @@ class SortBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(); // Placeholder, as this widget is not directly built
+    return Container();
   }
 
   void showSortBottomSheet(BuildContext context) {
