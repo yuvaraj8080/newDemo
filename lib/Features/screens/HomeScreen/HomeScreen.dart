@@ -176,7 +176,6 @@ class HomeScreen extends StatelessWidget {
                       // Download App Section
                       AppDownloadSection(context),
 
-
                       SizedBox(height: 20),
                       Center(
                         child: Text(

@@ -7,6 +7,7 @@ import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart
 import 'package:oru_ecommerce_app/common/shimmers/vertical_productShimmer.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/Choice/sortFilterList.dart';
 import '../../../common/SortAndFilterArrayList/sortAndFilterArrayList.dart';
+import '../../../common/widgets.Login_Signup/layout/CenterMapButton.dart';
 import '../HomeScreen/widgets/TProductCardVertical.dart';
 
 class FilterSortProductScreen extends StatelessWidget {
@@ -22,6 +23,8 @@ class FilterSortProductScreen extends StatelessWidget {
     final PhoneMarketplace marketplace = PhoneMarketplace();
 
     return Scaffold(
+      floatingActionButton: CenterMapButton(),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
       appBar: TAppBar(
         showBackArrow: true,
         title: Row(
@@ -30,8 +33,8 @@ class FilterSortProductScreen extends StatelessWidget {
             SizedBox(width : 8),
             Row(
               children: [
-                Text("India ", style: Theme.of(context).textTheme.bodyMedium),
-                Icon(Icons.location_on_outlined)
+                Text("India ", style: Theme.of(context).textTheme.titleMedium),
+                Icon(Icons.location_on_outlined,size:25)
               ],
             ),
           ],

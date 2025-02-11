@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oru_ecommerce_app/Features/screens/HomeScreen/HomeScreen.dart';
 import 'package:oru_ecommerce_app/Features/screens/Login/mobileNumber.dart';
 import '../../../../common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../../common/widgets.Login_Signup/custom_shapes/container/TRoundedContainer.dart';
@@ -71,7 +72,7 @@ class SellScreen extends StatelessWidget {
             ListTile(
               onTap: () {
                 loginController.logout();
-                Get.offAll(()=>MobileNumberScreen());
+                Get.offAll(()=>HomeScreen());
               },
               leading: Icon(Icons.logout, size: 30),
               title: Text('Logout', style: Theme.of(context).textTheme.titleLarge),
