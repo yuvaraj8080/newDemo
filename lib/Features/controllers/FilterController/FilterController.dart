@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import '../../../data/repositories/ApiService/filterApi.dart';
+import '../../../data/service/ApiService/filterApi.dart';
 
 class FilterController extends GetxController {
   final FilterService filterService = FilterService();

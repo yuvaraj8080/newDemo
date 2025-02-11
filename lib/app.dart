@@ -1,7 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oru_ecommerce_app/Features/screens/HomeScreen/HomeScreen.dart';
+import 'package:oru_ecommerce_app/Features/screens/Login/widgets/splashScreen.dart';
 import 'package:oru_ecommerce_app/utils/theme/theme.dart';
 
 
@@ -16,9 +16,7 @@ class App extends StatelessWidget {
       themeMode: ThemeMode.system,
       theme:TAppTheme.lightTheme,
       darkTheme:TAppTheme.darkTheme,
-      // initialBinding:GeneralBinding(),
-      // getPages:AppRoutes.pages,
-      home:HomeScreen()
+      home:SplashScreen()
     );
   }
 }

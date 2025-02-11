@@ -4,7 +4,7 @@ import 'package:oru_ecommerce_app/Features/screens/HomeScreen/HomeScreen.dart';
 import 'package:oru_ecommerce_app/Features/screens/Login/widgets/NameScreen.dart';
 import 'package:oru_ecommerce_app/utils/popups/full_screen_loader.dart';
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
-import '../../../data/repositories/ApiService/authentication_service.dart';
+import '../../../data/service/ApiService/authentication_service.dart';
 import '../../screens/Login/widgets/mobileOtpScreen.dart';
 
 class LoginController extends GetxController {
@@ -20,21 +20,7 @@ class LoginController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    // Optionally check login status on initialization
-    // checkLoginStatus();
   }
-  //
-  // Future<void> checkLoginStatus() async {
-  //   bool loggedInStatus = await isLoggedIn(); // Call the isLoggedIn method
-  //   if (loggedInStatus) {
-  //     Get.offAll(() => const NavigationMenu()); // Navigate to the main menu if logged in
-  //   }
-  // }
-  //
-  // Future<bool> isLoggedIn() async {
-  //   // Call the isLoggedIn method from ApiService
-  //   return await apiService.isLoggedIn();
-  // }
 
 
   Future<void> requestOtp() async {

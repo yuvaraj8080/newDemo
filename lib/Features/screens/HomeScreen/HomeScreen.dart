@@ -8,7 +8,6 @@ import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/brand_home
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/home_categories.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/promo_slider.dart';
 import 'package:oru_ecommerce_app/Features/screens/Login/mobileNumber.dart';
-import 'package:oru_ecommerce_app/data/repositories/ApiService/authentication_service.dart';
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
 import '../../../common/shimmers/vertical_productShimmer.dart';
 import '../../../common/widgets.Login_Signup/Choice/filterBottomSheet.dart';
@@ -20,6 +19,7 @@ import '../../../common/widgets.Login_Signup/layout/TExpanstionTileFAQ.dart';
 import '../../../common/widgets.Login_Signup/layout/TRounded_ListView.dart';
 import '../../../common/widgets.Login_Signup/layout/grid_layout.dart';
 import '../../../common/widgets.Login_Signup/layout/searchTextFormField.dart';
+import '../../../data/service/ApiService/authentication_service.dart';
 import '../../../utils/constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {

@@ -1,9 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/HomeScreen.dart';
-import 'package:oru_ecommerce_app/data/repositories/ApiService/authentication_service.dart';
+import 'package:oru_ecommerce_app/Features/screens/Login/widgets/NameScreen.dart';
+import '../ApiService/authentication_service.dart';
+
 
 class AuthenticationRepository extends GetxController {
   static AuthenticationRepository get instance => Get.find();
@@ -22,6 +25,7 @@ class AuthenticationRepository extends GetxController {
     FlutterNativeSplash.remove();
     // REDIRECT TO THE APPROPRIATE SCREEN
     _checkAuthentication();
+    _requestNotificationPermissions();
   }
 
   void _checkAuthentication() async {
@@ -30,13 +34,36 @@ class AuthenticationRepository extends GetxController {
 
     if (isLoggedIn) {
       final isNameUpdated = await authService.isNameUpdated();
-      if (isNameUpdated) {
+      if (isNameUpdated){
         Get.off(() => const HomeScreen());
       } else {
-        Get.off(() => const HomeScreen());
+        Get.off(() => const Namescreen());
       }
     }else{
       Get.off(()=>const HomeScreen());
     }
   }
+
+
+  Future<void> _requestNotificationPermissions() async {
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    NotificationSettings settings = await messaging.requestPermission(
+      alert: true,
+      announcement: false,
+      badge: true,
+      carPlay: false,
+      criticalAlert: false,
+      provisional: false,
+      sound: true,
+    );
+
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      print('User granted permission');
+    } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
+      print('User granted provisional permission');
+    } else {
+      print('User denied permission');
+    }
+  }
+
 }
