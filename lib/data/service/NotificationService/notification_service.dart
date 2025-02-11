@@ -1,6 +1,5 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
-import '../../../app.dart'; // Ensure this imports your App class correctly
 
 Future<void> initializeNotification() async {
   await AwesomeNotifications().initialize(

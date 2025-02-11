@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS"/>
     <application
-        android:label="oru_ecommerce_app"
+        android:label="ORU Phone"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

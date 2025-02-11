@@ -4,6 +4,7 @@ import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:get/get.dart';
 import 'package:get_storage/get_storage.dart';
 import 'app.dart';
+import 'data/service/NotificationService/notification_service.dart';
 import 'data/service/authentication/authentication-repository.dart';
 import 'firebase_options.dart';
 
@@ -15,6 +16,8 @@ Future<void> main() async {
   final WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
   await GetStorage.init();
+
+  await initializeNotification(); // Initialize notifications
 
 
   ///----AWAIT SPLASH UNTIL ITEM LOAD----

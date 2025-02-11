@@ -1,3 +1,4 @@
+import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
@@ -46,8 +47,8 @@ class HomeScreen extends StatelessWidget {
                   icon: Icon(Icons.list, size: 36),
                     onPressed: () async {
                       showNotification(
-                        title: "ORU Phone App",
-                        body: "Welcome to OruPhone Mobile app",
+                        title: "Welcome to Our App!",
+                        body: "Today is Tuesday, February 11, 2025. We are excited to have you here!",
                       );
                     },
                 ),
@@ -57,7 +58,16 @@ class HomeScreen extends StatelessWidget {
             Row(
               children: [
                 Text("India ", style: Theme.of(context).textTheme.bodyMedium),
-                Icon(Icons.location_on_outlined)
+                IconButton(
+                  icon: Icon(Icons.notification_important_outlined,),
+                  onPressed: () async {
+                    showNotification(
+                      title: "Yuvaraj Dekhane",
+                      body: "Hello Welcome to our ORU phone app",
+                      notificationLayout: NotificationLayout.Messaging,
+                    );
+                  },
+                ),
               ],
             ),
           ],
