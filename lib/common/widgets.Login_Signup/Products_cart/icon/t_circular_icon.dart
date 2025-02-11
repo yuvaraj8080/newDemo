@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../../utils/constants/colors.dart';
 import '../../../../utils/constants/sizes.dart';
-import '../../../../utils/halpers/helper_functions.dart';
+import '../../../../utils/halpers/helper_function.dart';
 
 class TCircularIcon extends StatelessWidget {
   /// ApiService custom icon widget with a background color
@@ -37,7 +37,7 @@ class TCircularIcon extends StatelessWidget {
         borderRadius: BorderRadius.circular(100),
         color: backgroundColor != null
             ? backgroundColor!
-            : THelperFunctions.isDarkMode(context)
+            : THelperFunction.isDarkMode(context)
                 ? TColors.black.withOpacity(0.7)
                 : TColors.white.withOpacity(0.7),
       ),
