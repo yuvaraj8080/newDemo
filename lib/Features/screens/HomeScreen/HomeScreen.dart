@@ -19,6 +19,7 @@ import '../../../common/widgets.Login_Signup/layout/TRounded_ListView.dart';
 import '../../../common/widgets.Login_Signup/layout/grid_layout.dart';
 import '../../../common/widgets.Login_Signup/layout/searchTextFormField.dart';
 import '../../../data/service/ApiService/authentication_service.dart';
+import '../../../data/service/NotificationService/notification_service.dart';
 import '../../../utils/constants/colors.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -43,8 +44,12 @@ class HomeScreen extends StatelessWidget {
               children: [
                 IconButton(
                   icon: Icon(Icons.list, size: 36),
-                  onPressed: () {
-                  },
+                    onPressed: () async {
+                      showNotification(
+                        title: "ORU Phone App",
+                        body: "Welcome to OruPhone Mobile app",
+                      );
+                    },
                 ),
                 Image.asset(TImages.oruApp, width: 60),
               ],
