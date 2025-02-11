@@ -21,6 +21,10 @@ This project follows a **modular architecture** for better scalability and maint
 - **Presentation Layer**: Handles UI using Flutter widgets.
 - **Business Logic Layer**: Managed by **GetX** and **Provider** for state management.
 - **Data Layer**: Handles API calls and local storage (Hive/SharedPreferences).
+- ![MVVM Architecture](assets/images/products/img.png)
+
+
+
 
 
 ## 📌 Features
