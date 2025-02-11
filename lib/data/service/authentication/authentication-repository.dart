@@ -25,7 +25,6 @@ class AuthenticationRepository extends GetxController {
     FlutterNativeSplash.remove();
     // REDIRECT TO THE APPROPRIATE SCREEN
     _checkAuthentication();
-    _requestNotificationPermissions();
   }
 
   void _checkAuthentication() async {
@@ -34,35 +33,13 @@ class AuthenticationRepository extends GetxController {
 
     if (isLoggedIn) {
       final isNameUpdated = await authService.isNameUpdated();
-      if (isNameUpdated){
+      if (!isNameUpdated){
         Get.off(() => const HomeScreen());
       } else {
         Get.off(() => const Namescreen());
       }
     }else{
       Get.off(()=>const HomeScreen());
-    }
-  }
-
-
-  Future<void> _requestNotificationPermissions() async {
-    FirebaseMessaging messaging = FirebaseMessaging.instance;
-    NotificationSettings settings = await messaging.requestPermission(
-      alert: true,
-      announcement: false,
-      badge: true,
-      carPlay: false,
-      criticalAlert: false,
-      provisional: false,
-      sound: true,
-    );
-
-    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      print('User granted permission');
-    } else if (settings.authorizationStatus == AuthorizationStatus.provisional) {
-      print('User granted provisional permission');
-    } else {
-      print('User denied permission');
     }
   }
 

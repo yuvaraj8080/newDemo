@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oru_ecommerce_app/Features/controllers/Authentication/login_controller.dart';
+import 'package:pin_code_fields/pin_code_fields.dart';
+
+import '../../../../utils/constants/colors.dart';
 
 
 class MobileOtpBottomSheet extends StatelessWidget {
-  
+
   final controller = Get.put(LoginController());
   MobileOtpBottomSheet({Key? key}) : super(key: key);
 
@@ -13,17 +16,23 @@ class MobileOtpBottomSheet extends StatelessWidget {
     return Container();
   }
 
-  void showSortBottomSheet(BuildContext context) {
+
+
+  onInit() async {
+    controller.otpController.dispose();
+  }
+
+  void mobileOtpSheet(BuildContext context) {
     showModalBottomSheet(
       context: context,
       shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (context) => Container(
-        padding: const EdgeInsets.symmetric(horizontal: 20,),
         child: SingleChildScrollView(
-          child:
-            Column(
+          child: Padding(
+            padding: const EdgeInsets.all(20),
+            child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 // Header
@@ -31,7 +40,7 @@ class MobileOtpBottomSheet extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     const Text(
-                      'Sign in to continue',
+                      'Verify Otp',
                       style: TextStyle(
                         fontSize: 24,
                         color: Color(0xFF1D1B20),
@@ -45,70 +54,68 @@ class MobileOtpBottomSheet extends StatelessWidget {
                   ],
                 ),
                 const Divider(),
-                const SizedBox(height: 24),
-
+                const SizedBox(height:20),
                 // Phone Number Input Label
-                const Text(
-                  'Please Tell us Your Name',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    color: Color(0xFF1D1B20),
-                  ),
+                Text(
+                  "Please Enter the 4 digit verification code sent to your mobile number +91 8080737803 via sms",
+                  style: Theme.of(context).textTheme.bodySmall,
                 ),
-                const SizedBox(height: 8),
+                const SizedBox(height:10),
 
                 // Phone Number Input Field
-                Container(
-                  decoration: BoxDecoration(
-                    border: Border.all(color: const Color(0xFFCCCCCC)),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Row(
+                Form(
+                  child: Column(
                     children: [
-                      
-                      Expanded(
-                        child: TextField(
-                          controller: controller.mobileNumber,
-                          keyboardType: TextInputType.phone,
-                          decoration: const InputDecoration(
-                            hintText: 'Mobile Number',
-                            hintStyle: TextStyle(
-                              color: Color(0xFF49454F),
-                              fontSize: 16,
-                            ),
-                            border: InputBorder.none,
-                            contentPadding: EdgeInsets.symmetric(
-                              vertical: 16,
-                              horizontal: 12,
-                            ),
-                          ),
+                      PinCodeTextField(
+                        controller: controller.otpController,
+                        appContext: context,
+                        length: 4,
+                        obscureText: false,
+                        animationType: AnimationType.fade,
+                        pinTheme: PinTheme(
+                          shape: PinCodeFieldShape.box,
+                          borderRadius: BorderRadius.circular(15),
+                          fieldHeight:50,
+                          fieldWidth:50,
+                          inactiveColor: TColors.dark,
+                          activeColor: TColors.dark,
+                          selectedColor: TColors.dark,
+
+                        ),
+                        enableActiveFill: false,
+                        onChanged: (value) {
+                          // You can handle the value change here if needed
+                        },
+                        beforeTextPaste: (text) {
+                          return true; // Allow pasting
+                        },
+                      ),
+                      const SizedBox(height:10),
+                      Text(
+                        "Didn't receive OTP?",
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                      Text(
+                        "Resend OTP in 0:23 Sec",
+                        style: Theme.of(context).textTheme.bodyMedium,
+                      ),
+                      const SizedBox(height: 20),
+                      SizedBox(
+                        width: double.infinity,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            controller.validateOtpSheet(context);
+                            Get.back();
+                          },
+                          child: const Text("Verify OTP"),
                         ),
                       ),
                     ],
                   ),
                 ),
-                const SizedBox(height: 24),
-
-              
-
-                SizedBox(
-              width: double.infinity,
-              child: ElevatedButton(
-                onPressed: () {
-                  controller.requestOtp();
-                },
-                child: Row(
-                  mainAxisAlignment:MainAxisAlignment.center,
-                  children: [
-                    const Text('Next '),
-                    Icon(Icons.arrow_forward, color:Colors.white)
-                  ],
-                ),
-              ),
-            ),
               ],
             ),
+          ),
         ),
       ),
     );

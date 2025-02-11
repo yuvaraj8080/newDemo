@@ -1,7 +1,6 @@
 import 'dart:convert';
 import 'package:get/get.dart';
 import '../../../../utils/local_storage/storage_utility.dart';
-import '../../../common/widgets.Login_Signup/loaders/snackbar_loader.dart';
 
 class FavouritesController extends GetxController{
   static FavouritesController get instance => Get.find();
@@ -30,10 +29,11 @@ class FavouritesController extends GetxController{
 
   /// FAVORITES  PRODUCT TOGGLE IN THE WISHLIST METHOD
   void toggleFavouriteProduct(String productId) {
+
     if (!favourites.containsKey(productId)) {
       favourites[productId] = true;
       saveFavouritesStorage();
-      Get.snackbar('Success', 'Product has been removed form the Wishlist');
+      Get.snackbar('Success', 'Product has been added to the Wishlist');
     } else {
       TLocalStorage.instance().removeData(productId);
       favourites.remove(productId);
