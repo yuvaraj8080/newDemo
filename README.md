@@ -31,7 +31,24 @@ This project follows a **modular architecture** for better scalability and maint
 - 🎨 **Smooth UI/UX with Responsive Design**: Optimized for different screen sizes.
 - 🛠️ **Reusable Widgets**: Modular components for better code maintainability.
 
+## 📸 Output Screens
+Here are the key screens of the application with their respective functionalities:
 
+### 🔑 Authentication Screen
+Secure login and signup for users.  
+![User Authentication](assets/images/products/Authentication.png)
+
+### 🏠 Home Screen
+Displays a list of products with sorting and filtering options.  
+![Home Screen & Loading, Notification](assets/images/products/homeScreen.png)
+
+### 📋 Bottom Sheet
+Shows additional product details and actions.  
+![Bottom Sheet,Sort & Filter](assets/images/products/bottomSheet.png)
+
+### 🗺️ Google Map Integration
+Displays product locations on a map for easy navigation.  
+![Google Map, Product Location, Sell Phone](assets/images/products/googleMap.png)
 
 
 ### 1️⃣ Clone the Repository
