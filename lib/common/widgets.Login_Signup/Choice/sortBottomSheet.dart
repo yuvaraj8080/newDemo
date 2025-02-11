@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:oru_ecommerce_app/Features/screens/FilterSortScreen.dart';
+import 'package:oru_ecommerce_app/Features/screens/SortFilterProductScreen/FilterSortScreen.dart';
 import 'package:oru_ecommerce_app/utils/constants/colors.dart';
 
 import '../../../Features/controllers/SortAndFilterController.dart';

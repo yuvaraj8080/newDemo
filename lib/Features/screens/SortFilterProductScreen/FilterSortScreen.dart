@@ -6,8 +6,8 @@ import 'package:oru_ecommerce_app/common/widgets.Login_Signup/layout/searchTextF
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/appBar/appbar.dart';
 import 'package:oru_ecommerce_app/common/shimmers/vertical_productShimmer.dart';
 import 'package:oru_ecommerce_app/common/widgets.Login_Signup/Choice/sortFilterList.dart';
-import '../../common/SortAndFilterArrayList/sortAndFilterArrayList.dart';
-import 'HomeScreen/widgets/TProductCardVertical.dart';
+import '../../../common/SortAndFilterArrayList/sortAndFilterArrayList.dart';
+import '../HomeScreen/widgets/TProductCardVertical.dart';
 
 class FilterSortProductScreen extends StatelessWidget {
    FilterSortProductScreen({super.key,this.sortOption,  Map<String, List<String>>? selectedFilters});
@@ -55,10 +55,7 @@ class FilterSortProductScreen extends StatelessWidget {
               const SizedBox(height: 15),
               SortFilterList(
                 sortFilterList: marketplace.sortFilterList,
-                onSortFilterTap: (selectedOption) {
-                  // Call the fetchProducts method with the selected sort option
-                  productController.fetchProducts(sortOption: selectedOption);
-                },
+                onSortFilterTap: marketplace.sortFilterActions(context), // This now returns a single function
               ),
               const SizedBox(height: 25),
               Obx(() {

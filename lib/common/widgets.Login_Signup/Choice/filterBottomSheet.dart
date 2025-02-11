@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../Features/controllers/FilterController/FilterController.dart';
-import '../../../Features/screens/FilterSortScreen.dart';
+import '../../../Features/screens/SortFilterProductScreen/FilterSortScreen.dart';
 import '../../../utils/constants/colors.dart';
 
 class FilterBottomSheet extends StatelessWidget {
