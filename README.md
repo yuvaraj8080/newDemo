@@ -2,6 +2,11 @@
 
 A Flutter-based ORU Phone  application designed to provide a seamless shopping experience.
 
+## 📂 Access Assignment Materials
+All necessary materials, including recorded videos and document outputs, are available on Google Drive:
+
+🔗 **[Click here to access the assignment files](https://drive.google.com/drive/folders/11l8MIFQ3XD5Zx7yDcnAm5KxsKhocw6TL?usp=drive_link)**
+
 ## 🔄 State Management
 
 ### 🔹 **GetX**
