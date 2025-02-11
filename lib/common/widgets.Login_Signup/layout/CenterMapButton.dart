@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../Features/screens/Google_Map/screens/GoogleMap_View.dart';
 import '../../../utils/constants/colors.dart';
 
 
@@ -17,7 +18,7 @@ class CenterMapButton extends StatelessWidget {
       margin: EdgeInsets.only(bottom: 20), // Add margin to position it above the bottom
       child: FloatingActionButton(
         onPressed: () {
-          Get.snackbar('Google Map', 'Opening Map');
+          Get.to(()=> GoogleMap_View_Screen());
         },
         backgroundColor: Colors.black54, // Set background color to black
         shape: RoundedRectangleBorder(

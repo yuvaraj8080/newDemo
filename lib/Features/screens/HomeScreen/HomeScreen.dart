@@ -22,6 +22,7 @@ import '../../../common/widgets.Login_Signup/layout/searchTextFormField.dart';
 import '../../../data/service/ApiService/authentication_service.dart';
 import '../../../data/service/NotificationService/notification_service.dart';
 import '../../../utils/constants/colors.dart';
+import '../Google_Map/controller/LiveLocationController.dart';
 
 class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
@@ -30,6 +31,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final productController = Get.put(ProductController());
     final PhoneMarketplace marketplace = PhoneMarketplace();
+    final locationController = Get.put(LiveLocationController());
+
 
     final apiService = ApiService();
 

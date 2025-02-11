@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
+import '../../../Features/screens/SortFilterProductScreen/FilterSortScreen.dart';
 import '../../../utils/constants/colors.dart';
 import '../../../utils/validators/validator.dart';
 
@@ -11,6 +14,9 @@ class SearchATextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onTap:(){
+        Get.to(()=> FilterSortProductScreen());
+      },
       validator: (value) => TValidator.validateEmptyText("Name", value),
       decoration: InputDecoration(
         prefixIcon: Icon(Icons.search),
