@@ -67,8 +67,7 @@ class FilterSortProductScreen extends StatelessWidget {
                 }
                 return TGridLayout(
                   itemBuilder: (_, index) => TProductCardVertical(
-                    product: productController.products[index],
-                  ),
+                    product: productController.products[index]),
                   itemCount: productController.products.length,
                 );
               }),

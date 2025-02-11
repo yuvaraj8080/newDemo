@@ -32,8 +32,6 @@ class HomeScreen extends StatelessWidget {
     final apiService = ApiService();
 
 
-    // Define the actions for each sort/filter option
-
     return Scaffold(
       floatingActionButton: CenterFloatingButton(),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
