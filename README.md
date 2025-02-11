@@ -1,15 +1,38 @@
-# oru_ecommerce_app
-A new Flutter project.
+# 🛍️ oru_ecommerce_app
 
-## Getting Started
+A Flutter-based eCommerce application designed to provide a seamless shopping experience with efficient state management and local storage.
 
-This project is a starting point for a Flutter application.
+## 📌 Features
+- 🛒 Product listing & details
+- 🔍 Search functionality
+- 🛑 Cart & wishlist management
+- 💳 Secure checkout process
+- 🔄 User authentication
+- 📦 Order tracking
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🏗️ Architecture
+This project follows a **modular architecture** for better scalability and maintainability. The key layers are:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Presentation Layer**: Handles UI using Flutter widgets.
+- **Business Logic Layer**: Managed by **GetX** and **Provider** for state management.
+- **Data Layer**: Handles API calls and local storage (Hive/SharedPreferences).
+
+---
+
+## 🔄 State Management
+This project uses a **hybrid approach** for state management:
+- **GetX**: Used for navigation, API handling, and reactive UI updates.
+- **Provider**: Used for complex state handling in certain parts of the app.
+- **Local Storage**: Utilizes **Hive/SharedPreferences** for storing user preferences and cart data.
+
+---
+
+## 🛠️ Setup & Run the Project
+Follow these steps to set up and run the project locally:
+
+### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/yourusername/oru_ecommerce_app.git
+cd oru_ecommerce_app
