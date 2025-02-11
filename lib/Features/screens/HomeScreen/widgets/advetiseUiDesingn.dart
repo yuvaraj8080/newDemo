@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:iconsax/iconsax.dart';
 import 'package:oru_ecommerce_app/utils/constants/colors.dart';
 import 'package:qr_flutter/qr_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -152,27 +151,7 @@ Widget AppDownloadSection(BuildContext context) {
                 ],
               ),
             ),
-            // Social Media Icons
-            SizedBox(height: 20),
-            Text(
-              'Or Share',
-              style: TextStyle(
-                color: Colors.white,
-              ),
-            ),
-            SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _socialIcon(Iconsax.instagram, Colors.pink), // Instagram
-                SizedBox(width: 15),
-                _socialIcon(Iconsax.instagram, Colors.blue), // Telegram
-                SizedBox(width: 15),
-                _socialIcon(Icons.android, Colors.black), // X (Twitter)
-                SizedBox(width: 15),
-                _socialIcon(Iconsax.message, Colors.green), // WhatsApp
-              ],
-            ),
+            // Social Media Icon
           ],
         ),
       ),
@@ -180,17 +159,3 @@ Widget AppDownloadSection(BuildContext context) {
   );
 }
 
-Widget _socialIcon(IconData icon, Color color) {
-  return Container(
-    padding: EdgeInsets.all(8),
-    decoration: BoxDecoration(
-      color: color,
-      shape: BoxShape.circle,
-    ),
-    child: Icon(
-      icon,
-      color: Colors.white,
-      size: 24,
-    ),
-  );
-}
