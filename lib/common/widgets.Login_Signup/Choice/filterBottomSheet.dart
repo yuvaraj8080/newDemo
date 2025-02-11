@@ -197,7 +197,6 @@ class FilterBottomSheet extends StatelessWidget {
           ),
         ],
       ),
-
       ),
     );
   }

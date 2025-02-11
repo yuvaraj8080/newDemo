@@ -49,6 +49,7 @@ dependencies:
   connectivity_plus: ^6.0.3
   network_manager:
   pin_code_fields:
+  qr_flutter: ^4.1.0
   shimmer:
   firebase_core:
   firebase_app_check:
@@ -115,6 +116,7 @@ flutter:
     - assets/images/on_boarding_images/
     - assets/images/animations/
     - assets/icons/categories/
+    - assets/icons/payment_methods/
     - assets/images/images/
     - assets/images/products/
     - assets/user/

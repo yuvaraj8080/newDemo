@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:oru_ecommerce_app/Features/controllers/homeController/ProdcutController.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/TProductCardVertical.dart';
+import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/advetiseUiDesingn.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/brand_home_category.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/home_categories.dart';
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/promo_slider.dart';
@@ -52,14 +53,14 @@ class HomeScreen extends StatelessWidget {
 
     // Define the actions for each sort/filter option
     List<VoidCallback> sortFilterActions = [
-          () {SortBottomSheet().showSortBottomSheet(context);},
+          () { SortBottomSheet().showSortBottomSheet(context); },
           () {
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              backgroundColor: Colors.transparent,
-              builder: (context) => FilterBottomSheet(),
-            );
+        showModalBottomSheet(
+          context: context,
+          isScrollControlled: true,
+          backgroundColor: Colors.transparent,
+          builder: (context) => FilterBottomSheet(),
+        );
       },
           () {},
           () {},
@@ -79,12 +80,10 @@ class HomeScreen extends StatelessWidget {
             Row(
               children: [
                 IconButton(
-                  icon:Icon(Icons.list,size:36),
-                  onPressed:(){
-                  },
+                  icon: Icon(Icons.list, size: 36),
+                  onPressed: () {},
                 ),
                 Image.asset(TImages.oruApp, width: 60),
-
               ],
             ),
             Row(
@@ -96,12 +95,11 @@ class HomeScreen extends StatelessWidget {
           ],
         ),
         actions: [
-          // Use FutureBuilder to check login status
           FutureBuilder<bool>(
-            future: apiService.isLoggedIn(), // Call the async method
+            future: apiService.isLoggedIn(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return CircularProgressIndicator(); // Show a loading indicator while checking
+                return CircularProgressIndicator();
               } else if (snapshot.hasError) {
                 return IconButton(
                   icon: Icon(Icons.error),
@@ -110,16 +108,13 @@ class HomeScreen extends StatelessWidget {
                   },
                 );
               } else if (snapshot.hasData && snapshot.data == true) {
-                // User is logged in
                 return IconButton(
                   icon: Icon(Icons.notifications, size: 25),
                   onPressed: () {
-                    // Handle notification icon tap
                     Get.snackbar('Notifications', 'You have new notifications');
                   },
                 );
               } else {
-                // User is not logged in
                 return GestureDetector(
                   onTap: () {
                     Get.to(() => MobileNumberScreen());
@@ -153,7 +148,6 @@ class HomeScreen extends StatelessWidget {
               ],
             ),
           ),
-          // This is the scrollable part
           Expanded(
             child: SingleChildScrollView(
               child: Padding(
@@ -161,32 +155,21 @@ class HomeScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    // PROMO BANNER SLIDER
                     const SizedBox(height: 16),
                     TPromoSlider(),
-
-                    // WHATS ON YOUR MIND
                     const SizedBox(height: 16),
                     Text("What's on your mind?", style: Theme.of(context).textTheme.titleSmall),
                     const SizedBox(height: 8),
                     THomeCategories(),
-
-                    // TOP BRANDS
                     const SizedBox(height: 28),
                     Text("Top Brands", style: Theme.of(context).textTheme.titleSmall),
                     const SizedBox(height: 10),
                     TBrandHomeCategory(),
-
-                    // FETCHED PRODUCT HERE
                     const SizedBox(height: 28),
                     Text("Best Deal in India", style: Theme.of(context).textTheme.titleSmall),
                     const SizedBox(height: 15),
-
-                    //// SORTING AND FILTER SECTION HARE ////
-                    SortFilterList(sortFilterList:sortFilterList,onSortFilterTap:sortFilterActions,),
-                    const SizedBox(height:25),
-
-
+                    SortFilterList(sortFilterList: sortFilterList, onSortFilterTap: sortFilterActions),
+                    const SizedBox(height: 25),
                     Obx(() {
                       if (productController.isLoading.value) {
                         return const TVerticalProductShimmer();
@@ -201,8 +184,6 @@ class HomeScreen extends StatelessWidget {
                         itemCount: productController.products.length,
                       );
                     }),
-
-                    // FAQ SECTION THROUGH API
                     const SizedBox(height: 18),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -211,9 +192,7 @@ class HomeScreen extends StatelessWidget {
                         Icon(Icons.arrow_forward_ios),
                       ],
                     ),
-
                     const SizedBox(height: 10),
-
                     Obx(() {
                       if (productController.isLoading.value) {
                         return Center(child: CircularProgressIndicator());
@@ -223,6 +202,9 @@ class HomeScreen extends StatelessWidget {
                       }
                       return TExpansionTileFAQ(productController: productController);
                     }),
+                    const SizedBox(height: 10),
+                    // Download App Section
+                    AppDownloadSection(context),
                   ],
                 ),
               ),
@@ -233,6 +215,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-
-
