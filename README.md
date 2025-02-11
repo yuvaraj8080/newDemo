@@ -54,5 +54,5 @@ Displays product locations on a map for easy navigation.
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/yuvaraj8080/oru_ecommerce_app.git
+git clone https://github.com/yuvaraj8080/newDemo.git
 cd oru_ecommerce_app
