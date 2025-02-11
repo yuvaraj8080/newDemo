@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../../Features/controllers/FilterController/FilterController.dart';
+import '../../../Features/screens/FilterSortScreen.dart';
 import '../../../utils/constants/colors.dart';
 
 class FilterBottomSheet extends StatelessWidget {
@@ -182,9 +183,12 @@ class FilterBottomSheet extends StatelessWidget {
             child: ElevatedButton(
               onPressed: () {
                 // Handle apply action
+                // Handle apply action
                 if (controller.selectedFilters.value.isNotEmpty) {
-                  // Apply the selected sort option
-                  controller.applyFilters(); // Clear selection
+                  final filterValue = controller.selectedFilters.value;
+                  Get.back();
+                  // Perform the action based on the selected option
+                  Get.to(()=>FilterSortProductScreen(selectedFilters:filterValue,));
                 }
               },
               style: ElevatedButton.styleFrom(

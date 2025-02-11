@@ -43,11 +43,21 @@ class ProductController extends GetxController {
   }
 
   /// FETCH PRODUCTS FROM API
-  Future<void> fetchProducts() async {
+  Future<void> fetchProducts({String? sortOption, Map<String, dynamic>? filters}) async {
     final url = Uri.parse("http://40.90.224.241:5000/filter");
 
     final Map<String, dynamic> requestBody = {
-      "filter": {}
+      "filter": {
+        "condition": filters?['condition'] ?? [],
+        "make": filters?['make'] ?? [],
+        "storage": filters?['storage'] ?? [],
+        "ram": filters?['ram'] ?? [],
+        "warranty": filters?['warranty'] ?? [],
+        "priceRange": filters?['priceRange'] ?? [],
+        "verified": filters?['verified'] ?? false,
+        "sort": sortOption != null ? { "sortOption": sortOption } : {},
+        "page": 1
+      }
     };
 
     try {
@@ -74,7 +84,6 @@ class ProductController extends GetxController {
       print("Error fetching products: $e");
     }
   }
-
 
   /// FETCH FAQs FROM API
   Future<void> fetchFaqs() async {

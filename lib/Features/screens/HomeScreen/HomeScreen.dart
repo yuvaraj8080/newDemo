@@ -9,9 +9,8 @@ import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/home_categ
 import 'package:oru_ecommerce_app/Features/screens/HomeScreen/widgets/promo_slider.dart';
 import 'package:oru_ecommerce_app/Features/screens/Login/mobileNumber.dart';
 import 'package:oru_ecommerce_app/utils/constants/image_string.dart';
+import '../../../common/SortAndFilterArrayList/sortAndFilterArrayList.dart';
 import '../../../common/shimmers/vertical_productShimmer.dart';
-import '../../../common/widgets.Login_Signup/Choice/filterBottomSheet.dart';
-import '../../../common/widgets.Login_Signup/Choice/sortBottomSheet.dart';
 import '../../../common/widgets.Login_Signup/Choice/sortFilterList.dart';
 import '../../../common/widgets.Login_Signup/appBar/appbar.dart';
 import '../../../common/widgets.Login_Signup/layout/CenterFloatingButton.dart';
@@ -28,48 +27,12 @@ class HomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final productController = Get.put(ProductController());
+    final PhoneMarketplace marketplace = PhoneMarketplace();
+
     final apiService = ApiService();
 
-    List<String> names = [
-      "Sell Used Phone",
-      "Buy Used Phone",
-      "Compare Price",
-      "My Profile",
-      "My Listing",
-      "Services",
-      "Register your Store",
-      "Get the App"
-    ];
-
-    List<String> sortFilterList = [
-      "⬆⬇ Sort ",
-      " ☰  Filter  ",
-      "Nearby Deals",
-      "Deals in 250km",
-      "Verified Deals",
-      "   Apple   ",
-      "Samsung",
-      "Under Warranty"
-    ];
 
     // Define the actions for each sort/filter option
-    List<VoidCallback> sortFilterActions = [
-          () { SortBottomSheet().showSortBottomSheet(context); },
-          () {
-        showModalBottomSheet(
-          context: context,
-          isScrollControlled: true,
-          backgroundColor: Colors.transparent,
-          builder: (context) => FilterBottomSheet(),
-        );
-      },
-          () {},
-          () {},
-          () {},
-          () {},
-          () {},
-          () {},
-    ];
 
     return Scaffold(
       floatingActionButton: CenterFloatingButton(),
@@ -82,7 +45,8 @@ class HomeScreen extends StatelessWidget {
               children: [
                 IconButton(
                   icon: Icon(Icons.list, size: 36),
-                  onPressed: () {},
+                  onPressed: () {
+                  },
                 ),
                 Image.asset(TImages.oruApp, width: 60),
               ],
@@ -138,7 +102,6 @@ class HomeScreen extends StatelessWidget {
       body:RefreshIndicator(
         onRefresh:()async{
            productController.fetchProducts();
-
         },
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -150,7 +113,7 @@ class HomeScreen extends StatelessWidget {
                 children: [
                   SearchATextFormField(),
                   const SizedBox(height: 16),
-                  TScrollableListView(names: names),
+                  TScrollableListView(names: marketplace.names),
                 ],
               ),
             ),
@@ -174,7 +137,10 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(height: 28),
                       Text("Best Deal in India", style: Theme.of(context).textTheme.titleSmall),
                       const SizedBox(height: 15),
-                      SortFilterList(sortFilterList: sortFilterList, onSortFilterTap: sortFilterActions),
+                      SortFilterList(
+                        sortFilterList: marketplace.sortFilterList,
+                        onSortFilterTap: marketplace.sortFilterActions(context), // This now returns a single function
+                      ),
                       const SizedBox(height: 25),
                       Obx(() {
                         if (productController.isLoading.value) {

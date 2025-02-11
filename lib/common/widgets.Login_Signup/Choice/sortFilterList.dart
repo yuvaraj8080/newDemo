@@ -5,11 +5,11 @@ class SortFilterList extends StatelessWidget {
   const SortFilterList({
     super.key,
     required this.sortFilterList,
-    required this.onSortFilterTap, // Add this parameter
+    required this.onSortFilterTap, // Change this parameter
   });
 
   final List<String> sortFilterList;
-  final List<VoidCallback> onSortFilterTap; // List of callbacks
+  final Function(String) onSortFilterTap; // Single callback function
 
   @override
   Widget build(BuildContext context) {
@@ -23,12 +23,17 @@ class SortFilterList extends StatelessWidget {
           return Padding(
             padding: const EdgeInsets.only(right: 13),
             child: GestureDetector(
-              onTap: onSortFilterTap[index], // Call the corresponding callback
+              onTap: () => onSortFilterTap(sortFilterList[index]), // Call the function with the selected option
               child: TRoundedContainer(
                 radius: 8,
                 padding: EdgeInsets.all(8),
                 showBorder: true,
-                child: Center(child: Text(sortFilterList[index], style: Theme.of(context).textTheme.bodySmall)),
+                child: Center(
+                  child: Text(
+                    sortFilterList[index],
+                    style: Theme.of(context).textTheme.bodySmall,
+                  ),
+                ),
               ),
             ),
           );

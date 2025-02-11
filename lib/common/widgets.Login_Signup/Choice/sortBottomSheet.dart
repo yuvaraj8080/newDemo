@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:oru_ecommerce_app/Features/screens/FilterSortScreen.dart';
 import 'package:oru_ecommerce_app/utils/constants/colors.dart';
 
 import '../../../Features/controllers/SortAndFilterController.dart';
@@ -11,7 +12,7 @@ class SortBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Container(); // Placeholder, as this widget is not directly built
   }
 
   void showSortBottomSheet(BuildContext context) {
@@ -69,8 +70,10 @@ class SortBottomSheet extends StatelessWidget {
                         onPressed: () {
                           // Handle apply action
                           if (controller.selectedOption.value.isNotEmpty) {
-                            // Apply the selected sort option
+                            final sortValue = controller.selectedOption.value;
                             Navigator.pop(context);
+                            // Perform the action based on the selected option
+                            Get.to(()=>FilterSortProductScreen(sortOption:sortValue));
                           }
                         },
                         style: ElevatedButton.styleFrom(
